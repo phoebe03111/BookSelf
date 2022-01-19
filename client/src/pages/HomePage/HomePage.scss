@@ -2,10 +2,12 @@
 @use "../../styles/partials/mixins" as *;
 
 .hero {
-  @include center;
   @include bg-overlay("../../assets/images/hero-1.jpeg");
   background-size: cover;
   height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   @include tablet {
     height: 90vh;
@@ -14,5 +16,6 @@
   &__text {
     text-shadow: $text-shadow;
     color: white;
+    margin-bottom: 3rem;
   }
 }
