@@ -1,0 +1,29 @@
+@use "./variables" as *;
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin bg-overlay($url) {
+  background: linear-gradient(#32323250, #32323250), url($url);
+}
+
+@mixin section-padding {
+  padding: 2rem 4rem;
+}
+
+// Breakpoints
+@mixin tablet {
+  @media screen and (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $breakpoint-desktop) {
+      @content;
+    }
+  }
+  

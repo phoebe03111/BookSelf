@@ -1,0 +1,8 @@
+@use "../../styles/partials/mixins" as *;
+
+.hero {
+  @include center;
+  @include bg-overlay("../../assets/images/hero-1.jpeg");
+  background-size: cover;
+  height: 70vh;
+}

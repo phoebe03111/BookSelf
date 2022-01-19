@@ -4,6 +4,7 @@ import BookDetailPage from "../src/pages/BookDetailPage/BookDetailPage";
 import AddBookPage from "../src/pages/AddBookPage/AddBookPage";
 import BooksPage from "../src/pages/BooksPage/BooksPage";
 import HomePage from "../src/pages/HomePage/HomePage";
+import "./styles/App.scss";
 
 function App() {
   return (
