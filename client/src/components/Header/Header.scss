@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  &__logo {
+    width: 10rem;
+    height: 5rem;
+    object-fit: cover;
+  }
+
+  &__nav {
+    display: flex;
+  }
+
+  &__menu {
+    display: flex;
+
+    &--hidden {
+      display: none;
+    }
+  }
+}
+
+.menu-icon {
+  width: 3rem;
+  cursor: pointer;
+}
+

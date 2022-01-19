@@ -4,7 +4,7 @@ import "./HomePage.scss";
 function HomePage() {
   return (
     <div className="hero">
-      <h1>
+      <h1 className="hero__text">
         "If you want to know someone, <br /> look at their bookshelves."
       </h1>
     </div>

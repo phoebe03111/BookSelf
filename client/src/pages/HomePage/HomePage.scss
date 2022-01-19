@@ -1,3 +1,4 @@
+@use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
 .hero {
@@ -5,4 +6,13 @@
   @include bg-overlay("../../assets/images/hero-1.jpeg");
   background-size: cover;
   height: 70vh;
+
+  @include tablet {
+    height: 90vh;
+  }
+
+  &__text {
+    text-shadow: $text-shadow;
+    color: white;
+  }
 }
