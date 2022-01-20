@@ -17,6 +17,11 @@
     height: 80vh;
   }
 
+  @include desktop {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
   &__text {
     text-shadow: $text-shadow;
     color: white;
