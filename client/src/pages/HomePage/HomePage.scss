@@ -14,10 +14,7 @@
 
   @include tablet {
     align-items: flex-start;
-  }
-
-  @include desktop {
-    height: 90vh;
+    height: 80vh;
   }
 
   &__text {

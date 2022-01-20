@@ -8,9 +8,19 @@ import "./Header.scss";
 function Header() {
   const [showMenu, setshowMenu] = useState(false);
 
-  const handleshowMenu = () => {
-    setshowMenu(!showMenu);
-  };
+  let menu;
+
+  if (showMenu) {
+    menu = (
+      <div className="header__menu">
+        <Link to="/books">
+          <div className="header__menu__item">Bookshelf</div>
+        </Link>
+        <div className="header__menu__item">Tracker</div>
+        <div className="header__menu__item">Login</div>
+      </div>
+    );
+  }
 
   return (
     <header className="header">
@@ -23,20 +33,14 @@ function Header() {
 
       {/* Navbar */}
       <nav className="header__nav">
-        <div className={showMenu ? "header__menu" : "header__menu--hidden"}>
-          <Link to="/books">
-            <div>Bookshelf</div>
-          </Link>
-          <div>Tracker</div>
-          <div>Login</div>
-        </div>
+        {menu}
 
         <div>
           <img
             src={showMenu ? menuCloseIcon : menuIcon}
             alt="menu"
             className="menu-icon"
-            onClick={handleshowMenu}
+            onClick={() => setshowMenu(!showMenu)}
           />
         </div>
       </nav>
