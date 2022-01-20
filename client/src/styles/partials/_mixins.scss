@@ -6,6 +6,13 @@
   align-items: center;
 }
 
+@mixin column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin bg-overlay($url) {
   background: linear-gradient(#32323250, #32323250), url($url);
 }

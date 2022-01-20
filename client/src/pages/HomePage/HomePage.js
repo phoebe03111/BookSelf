@@ -9,8 +9,8 @@ function HomePage() {
       <h1 className="hero__text">
         “If you want to know someone, <br /> look at their bookshelves.”
       </h1>
-      <Link to="/books">
-        <Button>explore</Button>
+      <Link to="/signup">
+        <Button>start</Button>
       </Link>
     </div>
   );

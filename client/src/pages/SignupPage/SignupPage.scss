@@ -1,0 +1,51 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.signup {
+  padding: 2rem 4rem;
+  background-color: $color-beige;
+  @include column;
+  gap: 2rem;
+
+  &__form {
+    width: 100%;
+    @include column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    @include tablet {
+      max-width: 40rem;
+    }
+
+    &-group {
+      width: 100%;
+    }
+
+    &-input {
+      width: 100%;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-top: 0.2rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.btn {
+  background-color: $color-green;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+
+  &--signup {
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
