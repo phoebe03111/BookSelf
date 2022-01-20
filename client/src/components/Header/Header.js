@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logoImg from "../../assets/images/logo.png";
+import logoImg from "../../assets/images/logo-1.png";
 import menuIcon from "../../assets/images/icons/menu-bars.svg";
 import menuCloseIcon from "../../assets/images/icons/menu-close.svg";
 import "./Header.scss";
 
 function Header() {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [showMenu, setshowMenu] = useState(false);
 
-  const handleMenuOpen = () => {
-    setMenuIsOpen(!menuIsOpen);
+  const handleshowMenu = () => {
+    setshowMenu(!showMenu);
   };
 
   return (
@@ -23,7 +23,7 @@ function Header() {
 
       {/* Navbar */}
       <nav className="header__nav">
-        <div className={menuIsOpen ? "header__menu" : "header__menu--hidden"}>
+        <div className={showMenu ? "header__menu" : "header__menu--hidden"}>
           <Link to="/books">
             <div>Bookshelf</div>
           </Link>
@@ -33,10 +33,10 @@ function Header() {
 
         <div>
           <img
-            src={menuIsOpen ? menuCloseIcon : menuIcon}
+            src={showMenu ? menuCloseIcon : menuIcon}
             alt="menu"
             className="menu-icon"
-            onClick={handleMenuOpen}
+            onClick={handleshowMenu}
           />
         </div>
       </nav>

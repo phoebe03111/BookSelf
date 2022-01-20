@@ -1,6 +1,13 @@
+@use "../../styles/partials/variables" as *;
+@use '../../styles/partials/typography' as *;
+@use "../../styles/partials/mixins" as *;
+
 .header {
+  @include section-padding;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
   &__logo {
     width: 10rem;
     height: 5rem;
@@ -23,5 +30,6 @@
 .menu-icon {
   width: 3rem;
   cursor: pointer;
+  fill: white;
 }
 

@@ -11,7 +11,15 @@
 }
 
 @mixin section-padding {
-  padding: 2rem 4rem;
+  padding: 0 2rem;
+
+  @include tablet {
+    padding: 0 5rem;
+  }
+
+  @include desktop() {
+    padding: 0 8rem;
+  }
 }
 
 // Breakpoints
@@ -22,8 +30,7 @@
 }
 
 @mixin desktop {
-    @media screen and (min-width: $breakpoint-desktop) {
-      @content;
-    }
+  @media screen and (min-width: $breakpoint-desktop) {
+    @content;
   }
-  
+}
