@@ -3,12 +3,27 @@
 @use "../../styles/partials/mixins" as *;
 
 .books {
+  @include section-padding;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  &__book {
+    width: 8rem;
+    height: 10rem;
+    object-fit: cover;
+    box-shadow: $box-shadow;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }
 
 .section {
   background-color: $color-beige;
   height: 20vh;
+  @include center;
+  gap: 1.5rem;
 }
