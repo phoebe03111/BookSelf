@@ -1,0 +1,13 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.books {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section {
+  background-color: burlywood;
+  height: 20vh;
+}

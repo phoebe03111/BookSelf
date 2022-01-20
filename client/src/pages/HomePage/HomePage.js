@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import "./HomePage.scss";
 
@@ -8,8 +9,9 @@ function HomePage() {
       <h1 className="hero__text">
         "If you want to know someone, <br /> look at their bookshelves."
       </h1>
-      
-      <Button>Explore</Button>
+      <Link to="/books">
+        <Button>Explore</Button>
+      </Link>
     </div>
   );
 }

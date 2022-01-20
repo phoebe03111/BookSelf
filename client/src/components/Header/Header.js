@@ -24,7 +24,9 @@ function Header() {
       {/* Navbar */}
       <nav className="header__nav">
         <div className={menuIsOpen ? "header__menu" : "header__menu--hidden"}>
-          <div>Bookshelf</div>
+          <Link to="/books">
+            <div>Bookshelf</div>
+          </Link>
           <div>Tracker</div>
           <div>Login</div>
         </div>
