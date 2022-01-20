@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('CormorantGaramond-Italic.woff2') format('woff2'),
+        url('CormorantGaramond-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('CormorantGaramond-Bold.woff2') format('woff2'),
+        url('CormorantGaramond-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('CormorantGaramond-Regular.woff2') format('woff2'),
+        url('CormorantGaramond-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('CormorantGaramond-Light.woff2') format('woff2'),
+        url('CormorantGaramond-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('CormorantGaramond-SemiBold.woff2') format('woff2'),
+        url('CormorantGaramond-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
