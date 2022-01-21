@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import "./LoginPage.scss";
 
 const baseUrl = "http://localhost:8080";
 const loginUrl = `${baseUrl}/login`;
@@ -28,18 +30,31 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      {isLogInError && <label style={{ color: "red" }}>{errorMessage}</label>}
-      <form className="form" onSubmit={handleLogin}>
-        <div className="form-group">
-          Username: <input type="text" name="username" />
+    <div className="login">
+      <h1 className="login__title">Login</h1>
+      <form className="login__form" onSubmit={handleLogin}>
+        <div className="login__form-group">
+          Username:{" "}
+          <input type="text" name="username" className="login__form-input" />
         </div>
-        <div className="form-group">
-          Password: <input type="password" name="password" />
+        <div className="login__form-group">
+          Password:{" "}
+          <input
+            type="password"
+            name="password"
+            className="login__form-input"
+          />
         </div>
-        <button type="submit">Login</button>
+        <button className="btn btn--login" type="submit">
+          Login
+        </button>
       </form>
+      <p>
+        Don't have an account yet?{" "}
+        <Link to="/signup">
+          <span className="btn">Sign up</span>
+        </Link>
+      </p>
     </div>
   );
 }

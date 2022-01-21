@@ -17,7 +17,9 @@ function Header() {
           <div className="header__menu__item">Bookshelf</div>
         </Link>
         <div className="header__menu__item">Tracker</div>
+        <Link to="/signup">
         <div className="header__menu__item">Login</div>
+        </Link>
       </div>
     );
   }
