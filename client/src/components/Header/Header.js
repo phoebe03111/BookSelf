@@ -4,25 +4,14 @@ import logoImg from "../../assets/images/logo-1.png";
 import menuIcon from "../../assets/images/icons/menu-bars.svg";
 import menuCloseIcon from "../../assets/images/icons/menu-close.svg";
 import "./Header.scss";
+import NavModal from "../NavModal/NavModal";
 
 function Header() {
   const [showMenu, setshowMenu] = useState(false);
 
-  let menu;
-
-  if (showMenu) {
-    menu = (
-      <div className="header__menu">
-        <Link to="/books">
-          <div className="header__menu__item">Bookshelf</div>
-        </Link>
-        <div className="header__menu__item">Tracker</div>
-        <Link to="/signup">
-        <div className="header__menu__item">Login</div>
-        </Link>
-      </div>
-    );
-  }
+  const handleToggle = () => {
+    setshowMenu(!showMenu);
+  };
 
   return (
     <header className="header">
@@ -35,14 +24,14 @@ function Header() {
 
       {/* Navbar */}
       <nav className="header__nav">
-        {menu}
+        {showMenu && <NavModal onToggle={handleToggle}/>}
 
         <div>
           <img
             src={showMenu ? menuCloseIcon : menuIcon}
             alt="menu"
             className="menu-icon"
-            onClick={() => setshowMenu(!showMenu)}
+            onClick={handleToggle}
           />
         </div>
       </nav>

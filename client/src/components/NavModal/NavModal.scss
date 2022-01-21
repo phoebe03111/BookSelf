@@ -1,0 +1,26 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.nav {
+  @include column;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: $color-green;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70vw;
+  height: 100vh;
+  opacity: 0.9;
+  transition: all .4s ease;
+
+  &__item {
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: $color-beige;
+    letter-spacing: 1px;
+  }
+}
+
