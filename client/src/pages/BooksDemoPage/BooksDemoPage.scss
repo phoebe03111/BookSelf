@@ -1,0 +1,31 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.books {
+  @include section-padding;
+
+  &__container {
+    @include center;
+    gap: 1rem;
+  }
+
+  &__book {
+    width: 8rem;
+    height: 10rem;
+    object-fit: cover;
+    box-shadow: $box-shadow;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.section {
+  background-color: $color-beige;
+  height: 25vh;
+  @include column;
+  gap: 1.5rem;
+}

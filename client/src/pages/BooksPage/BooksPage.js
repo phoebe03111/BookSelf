@@ -4,8 +4,6 @@ import axios from "axios";
 import placeholder from "../../assets/images/logo.png";
 import "./BooksPage.scss";
 
-const API_URL = "https://www.googleapis.com/books/v1";
-const API_KEY = "AIzaSyDsY2TRXK7_SD19uzMFRVjAWIwUtyGsaSY";
 
 function BooksPage() {
   const [books, setBooks] = useState([]);
