@@ -109,8 +109,8 @@ function LoginForm() {
     );
   };
 
-  if (!isSignedUp) return renderSignup();
   if (!isLoggedIn) return renderLogin();
+  if (!isSignedUp) return renderSignup();
 }
 
 export default LoginForm;

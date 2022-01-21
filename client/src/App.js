@@ -1,7 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../src/components/Header/Header";
 import BookDetailPage from "../src/pages/BookDetailPage/BookDetailPage";
-import AddBookPage from "../src/pages/AddBookPage/AddBookPage";
 import BooksPage from "../src/pages/BooksPage/BooksPage";
 import HomePage from "../src/pages/HomePage/HomePage";
 import "./styles/App.scss";
@@ -13,7 +12,6 @@ function App() {
       <Header />
       <Switch>
         <Route path="/books/:booksId" component={BookDetailPage} />
-        <Route path="/books/add" exact component={AddBookPage} />
         <Route path="/books-demo" exact component={BooksDemoPage} />
         <Route path="/books" exact component={BooksPage} />
         <Route path="/" exact component={HomePage} />

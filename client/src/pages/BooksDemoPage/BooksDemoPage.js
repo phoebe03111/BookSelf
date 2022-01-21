@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import placeholder from "../../assets/images/logo.png";
 import "./BooksDemoPage.scss";
+import EmptyBook from "../../components/EmptyBook/EmptyBook";
 
 const API_URL = "https://www.googleapis.com/books/v1";
 const API_KEY = "AIzaSyDsY2TRXK7_SD19uzMFRVjAWIwUtyGsaSY";
@@ -12,7 +13,7 @@ function BooksDemoPage() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/volumes?q=bear attack&key=${API_KEY}`)
+      .get(`${API_URL}/volumes?q=grit&key=${API_KEY}`)
       .then((res) => {
         setBooks(res.data.items);
       })
@@ -61,6 +62,7 @@ function BooksDemoPage() {
               </div>
             );
           })}
+          <EmptyBook />
         </div>
       </section>
       <section className="section to-read">

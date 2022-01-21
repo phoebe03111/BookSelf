@@ -1,3 +1,15 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
+
+.empty-book {
+  @include center;
+  background-color: white;
+  width: 8rem;
+  height: 10rem;
+}
+
+.plus-icon {
+  width: 3rem;
+  cursor: pointer;
+}

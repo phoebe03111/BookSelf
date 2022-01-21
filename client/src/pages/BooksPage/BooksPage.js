@@ -16,8 +16,8 @@ function BooksPage() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
+        setUserInfo(res.data[0]);
         setIsLoading(false);
-        setUserInfo(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -26,10 +26,37 @@ function BooksPage() {
     <p>Loading...</p>
   ) : (
     <main className="books">
-      <h1>Welcome, {userInfo.name}!</h1>
-      <section className="section currently-reading"></section>
-      <section className="section finished-reading"></section>
-      <section className="section to-read"></section>
+      <h1 className="books__heading">Welcome, {userInfo.username}!</h1>
+      <section className="section-d currently-reading">
+        {userInfo.books.reading.map((book) => {
+          return (
+            <div key={book.id}>
+              <h1>{book.title}</h1>
+              <img src={book.image} />
+            </div>
+          );
+        })}
+      </section>
+      <section className="section-d finished-reading">
+        {userInfo.books.toRead.map((book) => {
+          return (
+            <div key={book.id}>
+              <h1>{book.title}</h1>
+              <img src={book.image} />
+            </div>
+          );
+        })}
+      </section>
+      <section className="section-d to-read">
+        {userInfo.books.finished.map((book) => {
+          return (
+            <div key={book.id}>
+              <h1>{book.title}</h1>
+              <img src={book.image} />
+            </div>
+          );
+        })}
+      </section>
     </main>
   );
 }
