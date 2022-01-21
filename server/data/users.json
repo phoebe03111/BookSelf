@@ -1,0 +1,25 @@
+[
+  {
+    "username": "you",
+    "email": "you@email",
+    "password": "123",
+    "books": {
+      "reading": [
+        {
+          "id": 1,
+          "title": "Midnight Library"
+        },
+        {
+          "id": 2,
+          "title": "Atomic habits"
+        }
+      ],
+      "finished": []
+    }
+  },
+  {
+    "username": "me",
+    "email": "me@gmail",
+    "password": "123"
+  }
+]

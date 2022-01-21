@@ -8,6 +8,7 @@ import "./BooksPage.scss";
 function BooksPage() {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
     // Grab token from sessionStorage
@@ -21,17 +22,12 @@ function BooksPage() {
         console.log(res);
         setIsLoading(false);
         setBooks(res.data);
+        setIsAuthorized()
       });
-
-    //   axios
-    //     .get(`${API_URL}/volumes?q=bear attacks&key=${API_KEY}`)
-    //     .then((res) => {
-    //       setBooks(res.data.items);
-    //     })
-    //     .catch((err) => console.log(err));
   }, []);
 
   return (
+    // isAuthorized
     <main className="books">
       <section className="section currently-reading">
         {/* {books.slice(0, 5).map((book) => {

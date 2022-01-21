@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./SignupPage.scss";
 
@@ -10,6 +10,8 @@ const signupUrl = `${baseUrl}/signup`;
 function SignupPage() {
   const [isSignedUp, setIsSignedUp] = useState(false);
 
+  let history = useHistory();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -23,6 +25,7 @@ function SignupPage() {
         setIsSignedUp(true);
 
         // Redirect to login page
+        history.push('/login')
       })
       .catch((err) => console.log(err));
   };

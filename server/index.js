@@ -3,12 +3,22 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
-require('dotenv').config();
+const fs = require("fs");
+require("dotenv").config();
 
 app.use(express.json());
 app.use(cors());
 
 const JWT_SECRET = process.env.JWT_SECRET;
+
+const readFile = () => {
+  const userData = fs.readFileSync("./data/users.json");
+  return JSON.parse(userData);
+};
+
+const writeFile = (userData) => {
+  fs.writeFileSync("./data/users.json", JSON.stringify(userData, null, 2));
+};
 
 // Authorization middleware
 function authorize(req, res, next) {
@@ -40,12 +50,18 @@ const users = {};
 
 // Signup logic
 app.post("/signup", (req, res) => {
-  const { username, name, password } = req.body;
+  const { username, email, password } = req.body;
 
-  users[username] = {
-    name,
-    password, // Should be encryted
+  const usersData = readFile();
+
+  const newUser = {
+    username,
+    email,
+    password,
   };
+
+  usersData.push(newUser);
+  writeFile(usersData);
 
   res.json({ success: "true" });
 });
@@ -61,7 +77,10 @@ app.post("/login", (req, res) => {
       expiresIn: "24h",
     });
 
+    // Send token back to client
     res.json({ token });
+    
+    const userBooksData = readFile();
   }
 });
 
