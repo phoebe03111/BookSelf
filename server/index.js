@@ -69,19 +69,17 @@ app.post("/signup", (req, res) => {
 // Login logic
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
-  const user = users[username];
 
-  // If user is found and password is correct => create TOKEN and send it back to the client
-  if (user && user.password === password) {
-    const token = jwt.sign({ name: user.name }, JWT_SECRET, {
-      expiresIn: "24h",
-    });
-
-    // Send token back to client
-    res.json({ token });
-    
-    const userBooksData = readFile();
-  }
+  const usersData = readFile();
+  usersData.filter((user) => {
+    // If user is found and password is correct => create TOKEN and send it back to the client
+    if (user.username === username && user.password === password) {
+      const token = jwt.sign({ name: user.username }, JWT_SECRET, {
+        expiresIn: "24h",
+      });
+      res.json({ token });
+    }
+  });
 });
 
 app.get("/books", authorize, (req, res) => {

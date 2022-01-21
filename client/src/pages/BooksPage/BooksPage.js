@@ -1,52 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import placeholder from "../../assets/images/logo.png";
 import "./BooksPage.scss";
 
-
 function BooksPage() {
-  const [books, setBooks] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
     // Grab token from sessionStorage
     const token = sessionStorage.getItem("token");
-    
+
     axios
       .get("http://localhost:8080/books", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res);
         setIsLoading(false);
-        setBooks(res.data);
-        setIsAuthorized()
-      });
+        setUserInfo(res.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
-  return (
-    // isAuthorized
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : (
     <main className="books">
-      <section className="section currently-reading">
-        {/* {books.slice(0, 5).map((book) => {
-          return (
-            <div key={book.id}>
-              <Link to={`/books/${book.id}`}>
-                <img
-                  className="books__book"
-                  src={
-                    book?.volumeInfo?.imageLinks?.thumbnail
-                      ? book.volumeInfo.imageLinks.thumbnail
-                      : placeholder
-                  }
-                />
-              </Link>
-            </div>
-          );
-        })} */}
-      </section>
+      <h1>Welcome, {userInfo.name}!</h1>
+      <section className="section currently-reading"></section>
       <section className="section finished-reading"></section>
       <section className="section to-read"></section>
     </main>

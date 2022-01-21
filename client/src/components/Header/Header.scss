@@ -7,6 +7,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: $box-shadow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $color-green;
 
   &__logo {
     width: 10rem;

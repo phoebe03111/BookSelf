@@ -2,11 +2,19 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
 
+.home {
+  margin-top: 5rem;
+  
+  @include tablet {
+    display: flex;
+  }
+}
+
 .hero {
   @include section-padding;
   @include bg-overlay("../../assets/images/hero-1.jpeg");
   background-size: cover;
-  height: 70vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,12 +22,6 @@
 
   @include tablet {
     align-items: flex-start;
-    height: 80vh;
-  }
-
-  @include desktop {
-    background-size: contain;
-    background-repeat: no-repeat;
   }
 
   &__text {
