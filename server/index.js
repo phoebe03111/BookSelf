@@ -83,7 +83,12 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/books", authorize, (req, res) => {
-  res.json(req.decoded);
+  const username = req.decoded.name;
+  const usersData = readFile();
+
+  const targetUser = usersData.filter((user) => user.username === username);
+
+  res.json(targetUser);
 });
 
 app.listen(PORT, () => console.log(`🚀 Server is launching on ${PORT}`));

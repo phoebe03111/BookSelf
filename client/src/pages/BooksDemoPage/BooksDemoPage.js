@@ -4,9 +4,10 @@ import axios from "axios";
 import placeholder from "../../assets/images/logo.png";
 import "./BooksDemoPage.scss";
 import EmptyBook from "../../components/EmptyBook/EmptyBook";
+import Book from "../../components/Book/Book";
 
-const API_URL = "https://www.googleapis.com/books/v1";
-const API_KEY = "AIzaSyDsY2TRXK7_SD19uzMFRVjAWIwUtyGsaSY";
+const API_URL = process.env.REACT_APP_API_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function BooksDemoPage() {
   const [books, setBooks] = useState([]);
@@ -26,41 +27,16 @@ function BooksDemoPage() {
         <h2>Currently Reading</h2>
         <div className="books__container">
           {books.slice(0, 4).map((book) => {
-            return (
-              <div key={book.id}>
-                <Link to={`/books/${book.id}`}>
-                  <img
-                    className="books__book"
-                    src={
-                      book?.volumeInfo?.imageLinks?.thumbnail
-                        ? book.volumeInfo.imageLinks.thumbnail
-                        : placeholder
-                    }
-                  />
-                </Link>
-              </div>
-            );
+            return <Book book={book} />;
           })}
+          <EmptyBook />
         </div>
       </section>
       <section className="section finished-reading">
         <h2>To-Read List</h2>
         <div className="books__container">
           {books.slice(4, 8).map((book) => {
-            return (
-              <div key={book.id}>
-                <Link to={`/books/${book.id}`}>
-                  <img
-                    className="books__book"
-                    src={
-                      book?.volumeInfo?.imageLinks?.thumbnail
-                        ? book.volumeInfo.imageLinks.thumbnail
-                        : placeholder
-                    }
-                  />
-                </Link>
-              </div>
-            );
+            return <Book book={book} />;
           })}
           <EmptyBook />
         </div>
@@ -69,21 +45,9 @@ function BooksDemoPage() {
         <h2>Finished Reading</h2>
         <div className="books__container">
           {books.slice(8, 10).map((book) => {
-            return (
-              <div key={book.id}>
-                <Link to={`/books/${book.id}`}>
-                  <img
-                    className="books__book"
-                    src={
-                      book?.volumeInfo?.imageLinks?.thumbnail
-                        ? book.volumeInfo.imageLinks.thumbnail
-                        : placeholder
-                    }
-                  />
-                </Link>
-              </div>
-            );
+            return <Book book={book} />;
           })}
+          <EmptyBook />
         </div>
       </section>
     </main>

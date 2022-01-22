@@ -1,0 +1,51 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.modal {
+  @include center;
+  padding: 2rem;
+  background-color: gray;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: 60vh;
+
+  &__close-btn {
+    width: 2rem;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+
+  &__form {
+    width: 100%;
+
+    &__content {
+      @include column;
+    }
+  }
+
+  &__input {
+    background-image: url("../../assets/images/icons/search.svg");
+    background-repeat: no-repeat;
+    background-position: top 45% right 5%;
+    background-size: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+    line-height: 1.5;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__results {
+    display: flex;
+  }
+}

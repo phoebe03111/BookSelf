@@ -6,15 +6,46 @@
     "books": {
       "reading": [
         {
-          "id": 1,
-          "title": "Midnight Library"
+          "id": "dqRGDwAAQBAJ",
+          "title": "Bear Attacks",
+          "authors": [
+            "Stephen Herrero"
+          ],
+          "publishedDate": "2018-04-01",
+          "image": "http://books.google.com/books/content?id=dqRGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
         },
         {
-          "id": 2,
-          "title": "Atomic habits"
+          "id": "R-NFAAAAYAAJ",
+          "title": "Bear Attacks II",
+          "authors": [
+            "James Gary Shelton"
+          ],
+          "publishedDate": "2001",
+          "image": "http://books.google.com/books/content?id=R-NFAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
         }
       ],
-      "finished": []
+      "toRead": [
+        {
+          "id": "R-NFAAAAYAAJ",
+          "title": "Bear Attacks II",
+          "authors": [
+            "James Gary Shelton"
+          ],
+          "publishedDate": "2001",
+          "image": "http://books.google.com/books/content?id=R-NFAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        }
+      ],
+      "finished": [
+        {
+          "id": "R-NFAAAAYAAJ",
+          "title": "Bear Attacks II",
+          "authors": [
+            "James Gary Shelton"
+          ],
+          "publishedDate": "2001",
+          "image": "http://books.google.com/books/content?id=R-NFAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        }
+      ]
     }
   },
   {
