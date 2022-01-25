@@ -4,14 +4,16 @@
 
 .modal {
   @include center;
-  padding: 2rem;
+  @include column;
+  justify-content: flex-start;
+  padding: 8rem 2rem 2rem;
   background-color: gray;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 30vw;
-  height: 60vh;
+  width: 70vw;
+  height: 70vh;
 
   &__close-btn {
     width: 2rem;
@@ -20,12 +22,13 @@
     right: 5%;
   }
 
+  &__content {
+    width: 100%;
+  }
+
   &__form {
     width: 100%;
-
-    &__content {
-      @include column;
-    }
+    margin-bottom: 2rem;
   }
 
   &__input {
@@ -47,5 +50,6 @@
 
   &__results {
     display: flex;
+    justify-content: space-around;
   }
 }

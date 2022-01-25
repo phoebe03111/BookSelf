@@ -14,7 +14,7 @@ function BooksDemoPage() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/volumes?q=grit&key=${API_KEY}`)
+      .get(`${API_URL}/volumes?q=bear attacks&key=${API_KEY}`)
       .then((res) => {
         setBooks(res.data.items);
       })
@@ -27,7 +27,7 @@ function BooksDemoPage() {
         <h2>Currently Reading</h2>
         <div className="books__container">
           {books.slice(0, 4).map((book) => {
-            return <Book book={book} />;
+            return <Book key={book.id} book={book} />;
           })}
           <EmptyBook />
         </div>
@@ -36,7 +36,7 @@ function BooksDemoPage() {
         <h2>To-Read List</h2>
         <div className="books__container">
           {books.slice(4, 8).map((book) => {
-            return <Book book={book} />;
+            return <Book key={book.id} book={book} />;
           })}
           <EmptyBook />
         </div>
@@ -45,7 +45,7 @@ function BooksDemoPage() {
         <h2>Finished Reading</h2>
         <div className="books__container">
           {books.slice(8, 10).map((book) => {
-            return <Book book={book} />;
+            return <Book key={book.id} book={book} />;
           })}
           <EmptyBook />
         </div>

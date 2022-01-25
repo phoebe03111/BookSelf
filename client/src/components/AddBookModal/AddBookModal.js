@@ -31,6 +31,7 @@ function AddBookModal({ onClick }) {
         alt="close"
         onClick={onClick}
       />
+      
       <div className="modal__content">
         <form className="modal__form" onSubmit={handleSubmit}>
           <input

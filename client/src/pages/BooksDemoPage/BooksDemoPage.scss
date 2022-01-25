@@ -6,13 +6,13 @@
   @include section-padding;
 
   &__container {
-    @include center;
-    gap: 1rem;
+    display: flex;
+    gap: 2rem;
   }
 
   &__book {
-    width: 8rem;
-    height: 10rem;
+    width: 11rem;
+    height: 15rem;
     object-fit: cover;
     box-shadow: $box-shadow;
     cursor: pointer;
@@ -25,7 +25,7 @@
 
 .section {
   background-color: $color-beige;
-  height: 25vh;
+  height: 40vh;
   @include column;
   gap: 1.5rem;
 }

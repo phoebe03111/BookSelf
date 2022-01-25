@@ -2,11 +2,7 @@ import React from "react";
 import Book from "../Book/Book";
 
 function SearchResult({ result }) {
-  return (
-    <div>
-      <Book book={result} />
-    </div>
-  );
+  return <Book book={result} />;
 }
 
 export default SearchResult;

@@ -5,7 +5,7 @@ import "./Book.scss";
 
 function Book({ book }) {
   return (
-    <div key={book.id}>
+    <div className="book-book">
       <Link to={`/books/${book.id}`}>
         <img
           className="books__book"
@@ -15,11 +15,11 @@ function Book({ book }) {
               : placeholder
           }
         />
-        <h3>{book.volumeInfo.title}</h3>
-        {book.volumeInfo.authors.map((author) => (
-          <p>{author}</p>
-        ))}
       </Link>
+      <h3>{book.volumeInfo.title}</h3>
+      {book.volumeInfo.authors.map((author) => (
+        <p key={author}>{author}</p>
+      ))}
     </div>
   );
 }
