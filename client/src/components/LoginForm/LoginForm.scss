@@ -23,27 +23,6 @@
   &-group {
     width: 100%;
   }
-
-  &__input {
-    width: 100%;
-    border: none;
-    padding: 0.5rem;
-    border-radius: 5px;
-    margin-top: 0.2rem;
-
-    &:focus {
-      outline: none;
-    }
-  }
-}
-
-.btn {
-  background-color: $color-green;
-  color: white;
-  font-size: 1rem;
-  border-radius: 5px;
-  padding: 0.5rem;
-  cursor: pointer;
 }
 
 .redirect {

@@ -52,15 +52,5 @@
     "username": "me",
     "email": "me@gmail",
     "password": "123"
-  },
-  {
-    "username": "spiderman",
-    "email": "marvel@gmail",
-    "password": "123"
-  },
-  {
-    "username": "ironman",
-    "email": "123@email",
-    "password": "123"
   }
 ]
