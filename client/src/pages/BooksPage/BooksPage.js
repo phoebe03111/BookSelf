@@ -28,7 +28,7 @@ function BooksPage() {
   ) : (
     <main className="books">
       <h1 className="books__heading">Welcome, {userInfo.username}!</h1>
-      {/* <section className="section-d currently-reading">
+      <section className="section-d currently-reading">
         {userInfo.books.reading.map((book) => {
           return (
             <div key={book.id}>
@@ -57,7 +57,7 @@ function BooksPage() {
             </div>
           );
         })}
-      </section> */}
+      </section> 
     </main>
   );
 }

@@ -10,7 +10,8 @@
 }
 
 body {
-  background-color: $color-green;
+  background-color: white;
+  @include center;
 }
 
 ul {

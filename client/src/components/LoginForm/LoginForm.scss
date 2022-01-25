@@ -7,18 +7,18 @@
   padding: 2rem;
   background-color: $color-beige;
   gap: 2rem;
+  
+  @include tablet {
+    width: 25vw;
+  }
 }
 
 .form {
   @include column;
-  width: 100%;
   align-items: flex-start;
   gap: 1rem;
   margin-bottom: 2rem;
-
-  @include tablet {
-    max-width: 40rem;
-  }
+  width: 100%;
 
   &-group {
     width: 100%;
@@ -44,4 +44,8 @@
   border-radius: 5px;
   padding: 0.5rem;
   cursor: pointer;
+}
+
+.redirect {
+  line-height: 2rem;
 }

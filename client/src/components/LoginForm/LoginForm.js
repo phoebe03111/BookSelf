@@ -71,11 +71,11 @@ function LoginForm() {
           </button>
         </form>
 
-        <p>
+        <p className="redirect">
           Already have an account?{" "}
-          <span className="btn" onClick={() => renderLogin()}>
+          <button className="btn" onClick={() => renderLogin()}>
             Log in
-          </span>
+          </button>
         </p>
       </div>
     );
@@ -99,11 +99,11 @@ function LoginForm() {
             Login
           </button>
         </form>
-        <p>
+        <p className="redirect">
           Don't have an account yet?{" "}
-          <span className="btn" onClick={() => renderSignup()}>
+          <button className="btn" onClick={() => renderSignup()}>
             Sign up
-          </span>
+          </button>
         </p>
       </div>
     );

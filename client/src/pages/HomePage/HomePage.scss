@@ -4,6 +4,7 @@
 
 .home {
   margin-top: 5rem;
+  width: 100%;
   
   @include tablet {
     display: flex;
@@ -14,7 +15,8 @@
   @include section-padding;
   @include bg-overlay("../../assets/images/hero-1.jpeg");
   background-size: cover;
-  height: 100vh;
+  height: calc(100vh - 5rem);
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +24,7 @@
 
   @include tablet {
     align-items: flex-start;
+    width: 75vw;
   }
 
   &__text {
