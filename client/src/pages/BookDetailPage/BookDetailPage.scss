@@ -1,0 +1,101 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.book {
+  &-detail {
+    @include white-bg;
+    margin-bottom: 4rem;
+    margin-top: 8rem;
+    width: 80vw;
+
+    &__container {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      @include tablet {
+        align-items: flex-start;
+        padding: 2rem;
+      }
+    }
+  }
+
+  &__image {
+    width: 10rem;
+    height: 14rem;
+    object-fit: cover;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    position: absolute;
+    z-index: 1;
+
+    &-bg {
+      background-color: gray;
+      width: 10rem;
+      height: 14rem;
+      position: relative;
+      top: 1rem;
+      right: -1rem;
+    }
+  }
+
+  &__top {
+    @include column;
+    gap: 3rem;
+
+    @include tablet {
+      flex-direction: row;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  &__info {
+    margin-left: 0rem;
+    align-self: flex-start;
+
+    @include tablet {
+      margin-left: 2rem;
+    }
+
+    &-item {
+      line-height: 2;
+    }
+  }
+
+  &__review {
+    line-height: 1.5;
+    font-size: 1rem;
+  }
+
+  &__quote {
+      line-height: 2;
+      padding: 0.3rem 0;
+      border-bottom: 1px dashed gray;
+  }
+
+  //   &__review {
+  //     width: 100%;
+  //     height: 10rem;
+  //     padding: 1rem;
+  //     font-size: 1.5rem;
+  //     line-height: 1.5;
+  //     resize: none;
+  //     font-family: inherit;
+  //     border-radius: 8px;
+  //     border: 1px solid lightgray;
+  //     color: inherit;
+  //     background-color: transparent;
+
+  //     &:focus {
+  //       outline: none;
+  //     }
+  //   }
+}

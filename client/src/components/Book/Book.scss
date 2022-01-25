@@ -10,12 +10,11 @@
   }
 
   &__book {
-    width: 11rem;
-    height: 16.5rem;
+    width: 8rem;
+    height: 11.5rem;
     object-fit: cover;
     box-shadow: $box-shadow;
     cursor: pointer;
-
 
     &:hover {
       opacity: 0.8;

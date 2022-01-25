@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./BooksDemoPage.scss";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
@@ -17,12 +17,19 @@ function BooksDemoPage() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/volumes?q=bear attacks&key=${API_KEY}`)
+      .get(`${API_URL}/volumes?q=chanel&key=${API_KEY}`)
       .then((res) => {
         setBooks(res.data.items);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const history = useHistory();
+
+  const handleClick = (e) => {
+    const category = e.target.name;
+    history.push(`/books/add/${category}`);
+  };
 
   return (
     <main className="books">
@@ -35,7 +42,9 @@ function BooksDemoPage() {
             type="button"
             color="primary"
             variant="contained"
-            endIcon={<AddToPhotosIcon />} // onClick={() => setIsSignedUp(false)}
+            endIcon={<AddToPhotosIcon />}
+            name="addCurrent"
+            onClick={handleClick}
           >
             Add
           </Button>
@@ -52,12 +61,14 @@ function BooksDemoPage() {
           <h2 className="section__title">
             <BookmarkAddIcon style={{ fontSize: "2rem" }} /> Want to read
           </h2>
+
           <Button
             type="button"
             color="primary"
             variant="contained"
             endIcon={<AddToPhotosIcon />}
-            // onClick={() => setIsSignedUp(false)}
+            name="addToRead"
+            onClick={handleClick}
           >
             Add
           </Button>
@@ -78,7 +89,9 @@ function BooksDemoPage() {
             type="button"
             color="primary"
             variant="contained"
-            endIcon={<AddToPhotosIcon />} // onClick={() => setIsSignedUp(false)}
+            endIcon={<AddToPhotosIcon />}
+            name="addFinished"
+            onClick={handleClick}
           >
             Add
           </Button>

@@ -10,7 +10,7 @@ const loginUrl = `${baseUrl}/login`;
 const signupUrl = `${baseUrl}/signup`;
 
 function LoginForm() {
-  const [isSignedUp, setIsSignedUp] = useState(false);
+  const [isSignedUp, setIsSignedUp] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -42,6 +42,7 @@ function LoginForm() {
         password: loginPassword,
       })
       .then((res) => {
+        sessionStorage.removeItem("token");
         sessionStorage.setItem("token", res.data.token);
         history.push("/books");
         // setIsLoggedIn(true);
@@ -66,6 +67,11 @@ function LoginForm() {
       .catch((err) => console.log(err));
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem("token");
+    setIsLoggedIn(false);
+  };
+
   const renderSignup = () => {
     return (
       <div className="auth">
@@ -79,7 +85,7 @@ function LoginForm() {
               fullWidth
               value={signupUsername}
               onChange={(e) => setSignupUsername(e.target.value)}
-              autoComplete='off'
+              autoComplete="off"
             />
           </div>
 
@@ -91,7 +97,7 @@ function LoginForm() {
               fullWidth
               value={signupEmail}
               onChange={(e) => setSignupEmail(e.target.value)}
-              autoComplete='off'
+              autoComplete="off"
             />
           </div>
 
@@ -103,7 +109,7 @@ function LoginForm() {
               fullWidth
               value={signupPassword}
               onChange={(e) => setSignupPassword(e.target.value)}
-              autoComplete='off'
+              autoComplete="off"
             />
           </div>
 
@@ -147,7 +153,7 @@ function LoginForm() {
               value={loginUsername}
               onChange={(e) => setLoginUsername(e.target.value)}
               error={loginUsernameError}
-              autoComplete='off'
+              autoComplete="off"
             />
           </div>
           <div className="form-group">
@@ -159,7 +165,7 @@ function LoginForm() {
               value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}
               error={loginPasswordError}
-              autoComplete='off'
+              autoComplete="off"
             />
           </div>
           <Button
@@ -177,17 +183,25 @@ function LoginForm() {
             color="primary"
             variant="contained"
             endIcon={<KeyboardArrowRightIcon />}
-            onClick={() => setIsLoggedIn(false)}
+            onClick={() => setIsSignedUp(false)}
           >
             Signup
           </Button>
         </p>
+        <Button
+          color="primary"
+          variant="contained"
+          endIcon={<KeyboardArrowRightIcon />}
+          onClick={handleLogout}
+        >
+          Log out
+        </Button>
       </div>
     );
   };
 
-  if (!isLoggedIn) return renderLogin();
   if (!isSignedUp) return renderSignup();
+  if (!isLoggedIn) return renderLogin();
 }
 
 export default LoginForm;

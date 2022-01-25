@@ -10,7 +10,11 @@
 }
 
 body {
-  background-color: $color-beige;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 223, 198, 1) 60%,
+    rgba(150, 108, 68, 0.8085609243697479) 100%
+  );
   font-family: "Roboto", sans-serif;
   @include center;
   color: $color-darkGray;

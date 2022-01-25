@@ -23,7 +23,16 @@
   @include tablet {
     padding: 0 5rem;
   }
+}
 
+@mixin white-bg {
+  background-color: rgba(255,255,255,0.7);
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+
+  @include desktop {
+    padding: 1.5rem 4rem;
+  }
 }
 
 // Breakpoints

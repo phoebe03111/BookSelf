@@ -52,5 +52,10 @@
     "username": "me",
     "email": "me@gmail",
     "password": "123"
+  },
+  {
+    "username": "spiderman",
+    "email": "123@email",
+    "password": "123"
   }
 ]

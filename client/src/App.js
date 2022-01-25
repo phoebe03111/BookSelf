@@ -6,12 +6,16 @@ import HomePage from "../src/pages/HomePage/HomePage";
 import { createTheme, ThemeProvider } from "@mui/material";
 import "./styles/App.scss";
 import BooksDemoPage from "./pages/BooksDemoPage/BooksDemoPage";
+import AddBookForm from "./pages/AddBookForm/AddBookForm";
 
 const theme = createTheme({
   palette: {
     primary: {
       main: "#33413c",
-    }
+    },
+    secondary: {
+      main: '#a50000',
+    },
   },
 });
 
@@ -21,7 +25,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route path="/books/:booksId" component={BookDetailPage} />
+          <Route path="/books/add/:category" component={AddBookForm} />
+          <Route path="/books/:bookId" component={BookDetailPage} />
           <Route path="/books-demo" exact component={BooksDemoPage} />
           <Route path="/books" exact component={BooksPage} />
           <Route path="/" exact component={HomePage} />
