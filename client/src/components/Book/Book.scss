@@ -2,8 +2,23 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
 
-.book-book {
+.book {
+  &__container {
     @include column;
     justify-content: flex-start;
     gap: 0.3rem;
+  }
+
+  &__book {
+    width: 11rem;
+    height: 16.5rem;
+    object-fit: cover;
+    box-shadow: $box-shadow;
+    cursor: pointer;
+
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }

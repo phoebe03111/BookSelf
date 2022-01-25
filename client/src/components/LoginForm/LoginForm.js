@@ -77,9 +77,9 @@ function LoginForm() {
               label="Username"
               variant="outlined"
               fullWidth
-              required
               value={signupUsername}
               onChange={(e) => setSignupUsername(e.target.value)}
+              autoComplete='off'
             />
           </div>
 
@@ -89,9 +89,9 @@ function LoginForm() {
               label="Email"
               variant="outlined"
               fullWidth
-              required
               value={signupEmail}
               onChange={(e) => setSignupEmail(e.target.value)}
+              autoComplete='off'
             />
           </div>
 
@@ -101,9 +101,9 @@ function LoginForm() {
               label="Password"
               variant="outlined"
               fullWidth
-              required
               value={signupPassword}
               onChange={(e) => setSignupPassword(e.target.value)}
+              autoComplete='off'
             />
           </div>
 
@@ -147,6 +147,7 @@ function LoginForm() {
               value={loginUsername}
               onChange={(e) => setLoginUsername(e.target.value)}
               error={loginUsernameError}
+              autoComplete='off'
             />
           </div>
           <div className="form-group">
@@ -158,6 +159,7 @@ function LoginForm() {
               value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}
               error={loginPasswordError}
+              autoComplete='off'
             />
           </div>
           <Button

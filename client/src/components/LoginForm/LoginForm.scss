@@ -7,9 +7,13 @@
   padding: 2rem;
   background-color: $color-beige;
   gap: 2rem;
-  
+
   @include tablet {
     width: 25vw;
+  }
+
+  &__title {
+    letter-spacing: 2px;
   }
 }
 
@@ -27,4 +31,5 @@
 
 .redirect {
   line-height: 2rem;
+  letter-spacing: 1px;
 }

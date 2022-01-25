@@ -3,7 +3,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .books {
-  @include section-padding;
+  // @include section-padding;
   display: flex;
   flex-direction: column;
   gap: 1rem;

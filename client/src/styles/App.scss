@@ -10,9 +10,10 @@
 }
 
 body {
-  background-color: white;
+  background-color: $color-beige;
   font-family: "Roboto", sans-serif;
   @include center;
+  color: $color-darkGray;
 }
 
 ul {

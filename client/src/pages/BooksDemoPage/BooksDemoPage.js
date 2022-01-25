@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import placeholder from "../../assets/images/logo.png";
 import "./BooksDemoPage.scss";
-import EmptyBook from "../../components/EmptyBook/EmptyBook";
+import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
+import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Book from "../../components/Book/Book";
+import { Button } from "@mui/material";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -24,30 +27,66 @@ function BooksDemoPage() {
   return (
     <main className="books">
       <section className="section currently-reading">
-        <h2>Currently Reading</h2>
-        <div className="books__container">
-          {books.slice(0, 4).map((book) => {
+        <div className="section__topic">
+          <h2 className="section__title">
+            <BookmarksIcon /> Currently Reading
+          </h2>
+          <Button
+            type="button"
+            color="primary"
+            variant="contained"
+            endIcon={<AddToPhotosIcon />} // onClick={() => setIsSignedUp(false)}
+          >
+            Add
+          </Button>
+        </div>
+        <div className="books__group">
+          {books.slice(0, 6).map((book) => {
             return <Book key={book.id} book={book} />;
           })}
-          <EmptyBook />
         </div>
       </section>
-      <section className="section finished-reading">
-        <h2>To-Read List</h2>
-        <div className="books__container">
+
+      <section className="section currently-reading">
+        <div className="section__topic">
+          <h2 className="section__title">
+            <BookmarkAddIcon style={{ fontSize: "2rem" }} /> Want to read
+          </h2>
+          <Button
+            type="button"
+            color="primary"
+            variant="contained"
+            endIcon={<AddToPhotosIcon />}
+            // onClick={() => setIsSignedUp(false)}
+          >
+            Add
+          </Button>
+        </div>
+        <div className="books__group">
           {books.slice(4, 8).map((book) => {
             return <Book key={book.id} book={book} />;
           })}
-          <EmptyBook />
         </div>
       </section>
-      <section className="section to-read">
-        <h2>Finished Reading</h2>
-        <div className="books__container">
+
+      <section className="section currently-reading">
+        <div className="section__topic">
+          <h2 className="section__title">
+            <CheckCircleIcon style={{ fontSize: "1.9rem" }} /> Finished Reading
+          </h2>
+          <Button
+            type="button"
+            color="primary"
+            variant="contained"
+            endIcon={<AddToPhotosIcon />} // onClick={() => setIsSignedUp(false)}
+          >
+            Add
+          </Button>
+        </div>
+        <div className="books__group">
           {books.slice(8, 10).map((book) => {
             return <Book key={book.id} book={book} />;
           })}
-          <EmptyBook />
         </div>
       </section>
     </main>

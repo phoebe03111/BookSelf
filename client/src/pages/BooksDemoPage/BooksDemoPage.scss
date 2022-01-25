@@ -4,29 +4,33 @@
 
 .books {
   @include section-padding;
+  margin-bottom: 3rem;
+  margin-top: 8rem;
 
-  &__container {
+  &__group {
     display: flex;
     gap: 2rem;
-  }
-
-  &__book {
-    width: 11rem;
-    height: 15rem;
-    object-fit: cover;
-    box-shadow: $box-shadow;
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(1.1);
-    }
+    flex-wrap: wrap;
   }
 }
 
 .section {
-  background-color: $color-beige;
-  height: 40vh;
   @include column;
-  gap: 1.5rem;
-}
+  align-items: flex-start;
+  margin-bottom: 2rem;
 
+  &__topic {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1.5px solid $color-darkGray;
+    width: 100%;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  &__title {
+    @include center;
+    gap: 0.5rem;
+  }
+}
