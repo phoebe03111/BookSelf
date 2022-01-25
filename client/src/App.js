@@ -4,16 +4,14 @@ import BookDetailPage from "../src/pages/BookDetailPage/BookDetailPage";
 import BooksPage from "../src/pages/BooksPage/BooksPage";
 import HomePage from "../src/pages/HomePage/HomePage";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { purple } from "@mui/material/colors";
 import "./styles/App.scss";
 import BooksDemoPage from "./pages/BooksDemoPage/BooksDemoPage";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#475847",
-    },
-    secondary: purple,
+      main: "#33413c",
+    }
   },
 });
 

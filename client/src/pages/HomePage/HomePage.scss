@@ -40,5 +40,10 @@
       font-size: 2.8rem;
       text-align: start;
     }
+
+    @include desktop {
+      font-size: 3rem;
+      text-align: start;
+    }
   }
 }
