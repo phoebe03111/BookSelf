@@ -6,27 +6,39 @@ import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Book from "../../components/Book/Book";
+import Book2 from "../../components/Book2/Book2";
 import { Button } from "@mui/material";
 import "./BooksPage.scss";
 
 function BooksPage() {
   const [userInfo, setUserInfo] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [books, setBooks] = useState([]);
 
   const history = useHistory();
 
-  useEffect(() => {
-    // Grab token from sessionStorage
-    const token = sessionStorage.getItem("token");
+  // useEffect(() => {
+  //   // Grab token from sessionStorage
+  //   const token = sessionStorage.getItem("token");
 
+  //   axios
+  //     .get("http://localhost:8080/books", {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     })
+  //     .then((res) => {
+  //       setUserInfo(res.data[0]);
+  //       setIsLoading(false);
+  //       console.log(userInfo)
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  useEffect(() => {
     axios
-      .get("http://localhost:8080/books", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .get("http://localhost:8080/book")
       .then((res) => {
-        setUserInfo(res.data[0]);
         setIsLoading(false);
-        console.log(userInfo)
+        setBooks(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -40,7 +52,7 @@ function BooksPage() {
     <p>Loading...</p>
   ) : (
     <main className="books">
-      <h1 className="books__heading">Welcome, {userInfo.username}!</h1>
+      {/* <h1 className="books__heading">Welcome, {userInfo.username}!</h1> */}
       <section className="section currently-reading">
         <div className="section__topic">
           <h2 className="section__title">
@@ -58,8 +70,11 @@ function BooksPage() {
           </Button>
         </div>
         <div className="books__group">
-          {userInfo.books.reading.map((book) => {
+          {/* {userInfo.books.reading.map((book) => {
             return <Book key={book.id} book={book} />;
+          })} */}
+          {books.filter(book => book.status === 0).map((book) => {
+            return <Book2 key={book.id} book={book} />;
           })}
         </div>
       </section>
@@ -82,8 +97,11 @@ function BooksPage() {
           </Button>
         </div>
         <div className="books__group">
-          {userInfo.books.toRead.map((book) => {
+          {/* {userInfo.books.toRead.map((book) => {
             return <Book key={book.id} book={book} />;
+          })} */}
+          {books.filter(book => book.status === 1).map((book) => {
+            return <Book2 key={book.id} book={book} />;
           })}
         </div>
       </section>
@@ -105,8 +123,11 @@ function BooksPage() {
           </Button>
         </div>
         <div className="books__group">
-          {userInfo.books.finished.map((book) => {
+          {/* {userInfo.books.finished.map((book) => {
             return <Book key={book.id} book={book} />;
+          })} */}
+          {books.filter(book => book.status === 2).map((book) => {
+            return <Book2 key={book.id} book={book} />;
           })}
         </div>
       </section>

@@ -9,6 +9,12 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cors());
 
+// Connecting to database
+const userRoutes = require("./routes/userRoute");
+const bookRoutes = require("./routes/bookRoute");
+app.use("/user", userRoutes);
+app.use("/book", bookRoutes);
+
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const readFile = () => {
@@ -82,13 +88,13 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.get("/books", authorize, (req, res) => {
-  const username = req.decoded.name;
-  const usersData = readFile();
+// app.get("/books", authorize, (req, res) => {
+//   const username = req.decoded.name;
+//   const usersData = readFile();
 
-  const targetUser = usersData.filter((user) => user.username === username);
+//   const targetUser = usersData.filter((user) => user.username === username);
 
-  res.json(targetUser);
-});
+//   res.json(targetUser);
+// });
 
 app.listen(PORT, () => console.log(`🚀 Server is launching on ${PORT}`));

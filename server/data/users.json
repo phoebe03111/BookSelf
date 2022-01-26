@@ -49,5 +49,10 @@
     "username": "spiderman",
     "email": "123@email",
     "password": "123"
+  },
+  {
+    "username": "spiderman",
+    "email": "uno@123",
+    "password": "123"
   }
 ]
