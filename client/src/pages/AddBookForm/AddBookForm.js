@@ -1,12 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import SearchResult from "../../components/SearchResult/SearchResult";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import "./AddBookForm.scss";
+
+const API_URL = process.env.REACT_APP_API_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function AddBookForm() {
+  const [results, setResults] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const searchTerm = e.target.book.value;
+
+    axios
+      .get(`${API_URL}/volumes?q=${searchTerm}&key=${API_KEY}`)
+      .then((res) => {
+        setResults(res.data.items);
+        e.target.book.value = "";
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <div className="add-form">
-      <form>
-        <h1>hi</h1>
-      </form>
-    </div>
+    <main className="add-book">
+      <div className="add-book__container">
+        <form className="add-book__search" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="search book title..."
+            className="add-book__input"
+            name="book"
+          />
+        </form>
+
+        <div className="add-book__results">
+          {results.length !== 0 &&
+            results.map((result) => {
+              return <SearchResult key={result.id} result={result} />;
+            })}
+        </div>
+      </div>
+
+      <div className="add-book__form">
+        <form>
+          <TextField id="filled-basic" label="Title" variant="filled" />
+        </form>
+      </div>
+    </main>
   );
 }
 

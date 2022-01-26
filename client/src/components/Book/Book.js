@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import placeholder from "../../assets/images/logo.png";
+import placeholder from "../../assets/images/book-placeholder.jpeg";
 import "./Book.scss";
 
 function Book({ book }) {

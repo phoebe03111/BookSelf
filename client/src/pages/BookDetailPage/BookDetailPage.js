@@ -24,15 +24,12 @@ function BookDetailPage() {
     axios
       .get(`${API_URL}/volumes/${bookId}?key=${API_KEY}`)
       .then((res) => {
-        console.log(res.data.volumeInfo);
         setBookData(res.data.volumeInfo);
       })
       .catch((err) => console.log(err));
   }, []);
 
   const { title, authors, publishedDate } = bookData;
-
-  console.log(bookData);
 
   return (
     <main className="book-detail">

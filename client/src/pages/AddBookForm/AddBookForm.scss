@@ -1,0 +1,60 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.add-book {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  margin-top: 8rem;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  &__container {
+    @include white-bg;
+
+    @include tablet {
+      width: 50%;
+    }
+  }
+
+  &__search {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  &__input {
+    background-image: url("../../assets/images/icons/search.svg");
+    background-repeat: no-repeat;
+    background-position: top 45% right 5%;
+    background-size: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+    line-height: 1.5;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__results {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__form {
+    @include white-bg;
+
+    @include tablet {
+      width: 50%;
+    }
+  }
+}
