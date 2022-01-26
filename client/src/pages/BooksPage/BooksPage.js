@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
+import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
+import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import Book from "../../components/Book/Book";
+import { Button } from "@mui/material";
 import "./BooksPage.scss";
 
 function BooksPage() {
   const [userInfo, setUserInfo] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+  const history = useHistory();
 
   useEffect(() => {
     // Grab token from sessionStorage
@@ -18,46 +26,90 @@ function BooksPage() {
       .then((res) => {
         setUserInfo(res.data[0]);
         setIsLoading(false);
+        console.log(userInfo)
       })
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(userInfo);
+  const handleClick = (e) => {
+    const category = e.target.name;
+    history.push(`/books/add/${category}`);
+  };
+
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <main className="books">
       <h1 className="books__heading">Welcome, {userInfo.username}!</h1>
-      <section className="section-d currently-reading">
-        {userInfo.books.reading.map((book) => {
-          return (
-            <div key={book.id}>
-              <h1>{book.title}</h1>
-              <img src={book.image} />
-            </div>
-          );
-        })}
+      <section className="section currently-reading">
+        <div className="section__topic">
+          <h2 className="section__title">
+            <BookmarksIcon /> Currently Reading
+          </h2>
+          <Button
+            type="button"
+            color="primary"
+            variant="contained"
+            endIcon={<AddToPhotosIcon />}
+            name="addCurrent"
+            onClick={handleClick}
+          >
+            Add
+          </Button>
+        </div>
+        <div className="books__group">
+          {userInfo.books.reading.map((book) => {
+            return <Book key={book.id} book={book} />;
+          })}
+        </div>
       </section>
-      <section className="section-d finished-reading">
-        {userInfo.books.toRead.map((book) => {
-          return (
-            <div key={book.id}>
-              <h1>{book.title}</h1>
-              <img src={book.image} />
-            </div>
-          );
-        })}
+
+      <section className="section currently-reading">
+        <div className="section__topic">
+          <h2 className="section__title">
+            <BookmarkAddIcon style={{ fontSize: "2rem" }} /> Want to read
+          </h2>
+
+          <Button
+            type="button"
+            color="primary"
+            variant="contained"
+            endIcon={<AddToPhotosIcon />}
+            name="addToRead"
+            onClick={handleClick}
+          >
+            Add
+          </Button>
+        </div>
+        <div className="books__group">
+          {userInfo.books.toRead.map((book) => {
+            return <Book key={book.id} book={book} />;
+          })}
+        </div>
       </section>
-      <section className="section-d to-read">
-        {userInfo.books.finished.map((book) => {
-          return (
-            <div key={book.id}>
-              <h1>{book.title}</h1>
-              <img src={book.image} />
-            </div>
-          );
-        })}
-      </section> 
+
+      <section className="section currently-reading">
+        <div className="section__topic">
+          <h2 className="section__title">
+            <CheckCircleIcon style={{ fontSize: "1.9rem" }} /> Finished Reading
+          </h2>
+          <Button
+            type="button"
+            color="primary"
+            variant="contained"
+            endIcon={<AddToPhotosIcon />}
+            name="addFinished"
+            onClick={handleClick}
+          >
+            Add
+          </Button>
+        </div>
+        <div className="books__group">
+          {userInfo.books.finished.map((book) => {
+            return <Book key={book.id} book={book} />;
+          })}
+        </div>
+      </section>
     </main>
   );
 }

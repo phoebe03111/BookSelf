@@ -6,22 +6,14 @@
     "books": {
       "reading": [
         {
-          "id": "dqRGDwAAQBAJ",
-          "title": "Bear Attacks",
+          "id": "KahvDwAAQBAJ",
+          "title": "Coco Chanel",
           "authors": [
-            "Stephen Herrero"
+            "Isabel Sanchez Vegara",
+            "Ana Albero"
           ],
-          "publishedDate": "2018-04-01",
-          "image": "http://books.google.com/books/content?id=dqRGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-        },
-        {
-          "id": "R-NFAAAAYAAJ",
-          "title": "Bear Attacks II",
-          "authors": [
-            "James Gary Shelton"
-          ],
-          "publishedDate": "2001",
-          "image": "http://books.google.com/books/content?id=R-NFAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          "publishedDate": "2018-03",
+          "image": "http://books.google.com/books/content?id=KahvDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
         }
       ],
       "toRead": [

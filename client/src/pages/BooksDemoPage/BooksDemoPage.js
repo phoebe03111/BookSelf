@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
-import "./BooksDemoPage.scss";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
@@ -19,6 +18,7 @@ function BooksDemoPage() {
     axios
       .get(`${API_URL}/volumes?q=chanel&key=${API_KEY}`)
       .then((res) => {
+        console.log(res.data.items)
         setBooks(res.data.items);
       })
       .catch((err) => console.log(err));
@@ -50,7 +50,7 @@ function BooksDemoPage() {
           </Button>
         </div>
         <div className="books__group">
-          {books.slice(0, 6).map((book) => {
+          {books.slice(0, 5).map((book) => {
             return <Book key={book.id} book={book} />;
           })}
         </div>
@@ -74,7 +74,7 @@ function BooksDemoPage() {
           </Button>
         </div>
         <div className="books__group">
-          {books.slice(4, 8).map((book) => {
+          {books.slice(3, 10).map((book) => {
             return <Book key={book.id} book={book} />;
           })}
         </div>
