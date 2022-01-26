@@ -16,26 +16,14 @@ function BooksPage() {
   const [books, setBooks] = useState([]);
 
   const history = useHistory();
-
-  // useEffect(() => {
-  //   // Grab token from sessionStorage
-  //   const token = sessionStorage.getItem("token");
-
-  //   axios
-  //     .get("http://localhost:8080/books", {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     })
-  //     .then((res) => {
-  //       setUserInfo(res.data[0]);
-  //       setIsLoading(false);
-  //       console.log(userInfo)
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
+  
   useEffect(() => {
+    // Grab token from sessionStorage
+    const token = sessionStorage.getItem("token");
     axios
-      .get("http://localhost:8080/book")
+      .get("http://localhost:8080/books", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
         setIsLoading(false);
         setBooks(res.data);
@@ -47,7 +35,7 @@ function BooksPage() {
     const category = e.target.name;
     history.push(`/books/add/${category}`);
   };
-
+  
   return isLoading ? (
     <p>Loading...</p>
   ) : (
@@ -73,9 +61,11 @@ function BooksPage() {
           {/* {userInfo.books.reading.map((book) => {
             return <Book key={book.id} book={book} />;
           })} */}
-          {books.filter(book => book.status === 0).map((book) => {
-            return <Book2 key={book.id} book={book} />;
-          })}
+          {books
+            .filter((book) => book.status === 0)
+            .map((book) => {
+              return <Book2 key={book.id} book={book} />;
+            })}
         </div>
       </section>
 
@@ -100,9 +90,11 @@ function BooksPage() {
           {/* {userInfo.books.toRead.map((book) => {
             return <Book key={book.id} book={book} />;
           })} */}
-          {books.filter(book => book.status === 1).map((book) => {
-            return <Book2 key={book.id} book={book} />;
-          })}
+          {books
+            .filter((book) => book.status === 1)
+            .map((book) => {
+              return <Book2 key={book.id} book={book} />;
+            })}
         </div>
       </section>
 
@@ -126,9 +118,11 @@ function BooksPage() {
           {/* {userInfo.books.finished.map((book) => {
             return <Book key={book.id} book={book} />;
           })} */}
-          {books.filter(book => book.status === 2).map((book) => {
-            return <Book2 key={book.id} book={book} />;
-          })}
+          {books
+            .filter((book) => book.status === 2)
+            .map((book) => {
+              return <Book2 key={book.id} book={book} />;
+            })}
         </div>
       </section>
     </main>

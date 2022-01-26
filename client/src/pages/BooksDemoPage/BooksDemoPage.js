@@ -5,7 +5,7 @@ import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import Book from "../../components/Book/Book";
+import Book3 from "../../components/Book3/Book3";
 import { Button } from "@mui/material";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -51,7 +51,7 @@ function BooksDemoPage() {
         </div>
         <div className="books__group">
           {books.slice(0, 5).map((book) => {
-            return <Book key={book.id} book={book} />;
+            return <Book3 key={book.id} book={book} />;
           })}
         </div>
       </section>
@@ -75,7 +75,7 @@ function BooksDemoPage() {
         </div>
         <div className="books__group">
           {books.slice(3, 10).map((book) => {
-            return <Book key={book.id} book={book} />;
+            return <Book3 key={book.id} book={book} />;
           })}
         </div>
       </section>
@@ -98,7 +98,7 @@ function BooksDemoPage() {
         </div>
         <div className="books__group">
           {books.slice(8, 10).map((book) => {
-            return <Book key={book.id} book={book} />;
+            return <Book3 key={book.id} book={book} />;
           })}
         </div>
       </section>

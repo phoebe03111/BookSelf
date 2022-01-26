@@ -21,13 +21,13 @@ router.route("/:id").get((req, res) => {
 });
 
 // POST a new user
-router.route("/add").post((req, res) => {
-  knex("User")
-    .insert(req.body)
-    .then((newUserId) => {
-      res.status(201).json(newUserId);
-    })
-    .catch(() => res.status(400).json("Error creating user"));
-});
+// router.route("/add").post((req, res) => {
+//   knex("User")
+//     .insert(req.body)
+//     .then((newUserId) => {
+//       res.status(201).json(newUserId);
+//     })
+//     .catch(() => res.status(400).json("Error creating user"));
+// });
 
 module.exports = router;

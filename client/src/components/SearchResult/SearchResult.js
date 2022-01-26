@@ -9,12 +9,12 @@ import "./SearchResult.scss";
 function SearchResult({ result }) {
   const [added, setAdded] = useState(false);
   const params = useParams();
-
+  const token = sessionStorage.getItem('token');
   const { id } = result;
   const { title, authors, publishedDate, imageLinks, description } =
   result.volumeInfo;
 
-  let status;
+  let status = 0;
   if (params.category === 'addCurrent') {
     status = 0
   } else if (params.category === 'addToRead') {
@@ -25,7 +25,7 @@ function SearchResult({ result }) {
 
   const handlePlus = () => {
     axios
-      .post("http://localhost:8080/book/add", {
+      .post("http://localhost:8080/books/add", {
         title: title,
         author: authors[0],
         published: publishedDate,
@@ -34,8 +34,9 @@ function SearchResult({ result }) {
         status: status,
         rating: 0,
         review: "",
-        userId: 2,
         googleId: id,
+      },{
+        headers: { Authorization: `Bearer ${token}` }
       })
       .then(() => setAdded(true))
       .catch((err) => console.log(err));
@@ -50,8 +51,8 @@ function SearchResult({ result }) {
         <h4>
           Author:{" "}
           {result.volumeInfo.authors &&
-            result.volumeInfo.authors.map((author) => {
-              return <span key={author}>{author}, </span>;
+            result.volumeInfo.authors.map((author, index) => {
+              return <span key={index}>{author}, </span>;
             })}
         </h4>
         <h4>Description:</h4>
