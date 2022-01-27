@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import BookRating from "../../components/BookRating/BookRating";
 import { Button, ButtonGroup } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -9,7 +10,6 @@ import FormControl from "@mui/material/FormControl";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
-import Rating from "@mui/material/Rating";
 import "./BookDetailPage.scss";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal/ConfirmDeleteModal";
 
@@ -76,13 +76,7 @@ function BookDetailPage() {
               </FormControl>
               <div>
                 <h3 className="book__info-item">Rating:</h3>
-                <Rating
-                  name="simple-controlled"
-                  value={value}
-                  onChange={(event, newValue) => {
-                    setValue(newValue);
-                  }}
-                />
+                <BookRating />
               </div>
             </div>
           </div>
