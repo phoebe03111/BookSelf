@@ -30,15 +30,16 @@
 
     &-list {
       display: flex;
+      align-items: center;
       gap: 1.7rem;
     }
 
     &-item {
       color: white;
+      font-size: 1rem;
       font-weight: bold;
-      font-size: 1.7rem;
-      font-family: "Cormorant Garamond", serif;
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
   }
 

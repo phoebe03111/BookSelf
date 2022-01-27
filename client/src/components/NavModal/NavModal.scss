@@ -5,22 +5,21 @@
 .nav {
   @include column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 2rem;
   background-color: $color-green;
   position: fixed;
   top: 0;
   left: 0;
-  width: 70vw;
+  width: 75vw;
   height: 100vh;
   opacity: 0.9;
-  transition: all .4s ease;
+  padding: 1rem;
+  transition: all 0.4s ease;
 
   &__item {
-    padding: 1rem;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
-    color: $color-beige;
+    color: white;
     letter-spacing: 1px;
   }
 }
-

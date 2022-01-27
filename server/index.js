@@ -3,7 +3,6 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
-const fs = require("fs");
 const knex = require("knex")(require("./knexfile").development);
 require("dotenv").config();
 
@@ -11,9 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // Connecting to database
-const userRoutes = require("./routes/userRoute");
 const bookRoutes = require("./routes/bookRoute");
-app.use("/user", userRoutes);
 app.use("/books", bookRoutes);
 
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -84,7 +81,7 @@ app.get("/books", authorize, (req, res) => {
     .join("user", "user.id", "book.userId")
     .where({ username: username })
     .then((data) => {
-      res.json(data);
+      res.status(201).json(data);
     })
     .catch(() => res.status(400).json("Error getting data"));
 });
@@ -107,5 +104,32 @@ app.post("/books/add", authorize, (req, res) => {
     });
 });
 
+//////////////// User Routes ////////////////
+
+// Put (update) a user data
+app.put("/users", authorize, (req, res) => {
+  const username = req.decoded.name;
+
+  knex("User")
+    .where({ username: username })
+    .update(req.body)
+    .then((data) => {
+      res.status(201).json(data);
+    })
+    .catch(() => res.status(400).json("Error creating user"));
+});
+
+// GET single user by username
+app.get("/goal", authorize, (req, res) => {
+  const username = req.decoded.name;
+
+  knex("User")
+    .select(['goal'])
+    .where({ username: username })
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch(() => res.status(400).json("Error creating user"));
+});
 
 app.listen(PORT, () => console.log(`🚀 Server is launching on ${PORT}`));

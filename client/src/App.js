@@ -5,7 +5,7 @@ import BooksPage from "../src/pages/BooksPage/BooksPage";
 import HomePage from "../src/pages/HomePage/HomePage";
 import { createTheme, ThemeProvider } from "@mui/material";
 import "./styles/App.scss";
-import AddBookForm from "./pages/AddBookForm/AddBookForm";
+import AddBookPage from "./pages/AddBookPage/AddBookPage";
 import EditBookPage from "./pages/EditBookPage/EditBookPage";
 import TrackerPage from "./pages/TrackerPage/TrackerPage";
 
@@ -27,7 +27,7 @@ function App() {
         <Header />
         <Switch>
           <Route path="/books/tracker" component={TrackerPage} />
-          <Route path="/books/add/:category" component={AddBookForm} />
+          <Route path="/books/add/:category" component={AddBookPage} />
           <Route path="/books/:bookId/edit" component={EditBookPage} />
           <Route path="/books/:bookId" component={BookDetailPage} />
           <Route path="/books" exact component={BooksPage} />

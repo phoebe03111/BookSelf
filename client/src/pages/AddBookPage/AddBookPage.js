@@ -3,7 +3,7 @@ import axios from "axios";
 import SearchResult from "../../components/SearchResult/SearchResult";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import "./AddBookForm.scss";
+import "./AddBookPage.scss";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;

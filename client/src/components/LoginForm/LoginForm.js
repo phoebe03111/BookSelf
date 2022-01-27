@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { TextField, Button } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -66,11 +66,6 @@ function LoginForm() {
       .catch((err) => console.log(err));
   };
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("token");
-    setIsLoggedIn(false);
-  };
-
   const renderSignup = () => {
     return (
       <div className="auth">
@@ -104,6 +99,7 @@ function LoginForm() {
             <TextField
               id="outlined-basic"
               label="Password"
+              type="password"
               variant="outlined"
               fullWidth
               value={signupPassword}
@@ -129,7 +125,7 @@ function LoginForm() {
             color="primary"
             variant="contained"
             endIcon={<KeyboardArrowRightIcon />}
-            onClick={renderLogin}
+            onClick={() => setIsLoggedIn(false)}
           >
             Login
           </Button>
@@ -188,16 +184,6 @@ function LoginForm() {
             Signup
           </Button>
         </p>
-
-        {/* <Button
-          color="primary"
-          variant="contained"
-          endIcon={<KeyboardArrowRightIcon />}
-          onClick={handleLogout}
-          style={{ marginTop: "5rem" }}
-        >
-          Log out
-        </Button> */}
       </div>
     );
   };

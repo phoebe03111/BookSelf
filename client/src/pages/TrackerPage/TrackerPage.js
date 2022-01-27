@@ -13,17 +13,10 @@ import ProgressBar from "../../components/ProgressBar/ProgressBar";
 function TrackerPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [books, setBooks] = useState([]);
-  const [goal, setGoal] = useState(10);
+  const [goal, setGoal] = useState(1);
   const history = useHistory();
 
-  const handleClick = (e) => {
-    const category = e.target.name;
-    history.push(`/books/add/${category}`);
-  };
-
-  let finishedAmount = books.filter((book) => book.status === 2).length;
-  let percentage = Math.floor((finishedAmount / goal) * 100);
-
+  // Get books data
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     axios
@@ -36,6 +29,27 @@ function TrackerPage() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  // Get user's initial goal from database
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    axios
+      .get(`http://localhost:8080/goal`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        setGoal(res.data[0].goal);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleClick = (e) => {
+    const category = e.target.name;
+    history.push(`/books/add/${category}`);
+  };
+  // Setup progress bar percantage
+  let finishedAmount = books.filter((book) => book.status === 2).length;
+  let percentage = Math.floor((finishedAmount / goal) * 100);
 
   return isLoading ? (
     <p>Loading...</p>
@@ -54,7 +68,20 @@ function TrackerPage() {
               variant="outlined"
               size="small"
               value={goal}
-              onChange={(e) => setGoal(e.target.value)}
+              onChange={(e) => {
+                setGoal(e.target.value);
+
+                const token = sessionStorage.getItem("token");
+                axios.put(
+                  `http://localhost:8080/users`,
+                  {
+                    goal: e.target.value,
+                  },
+                  {
+                    headers: { Authorization: `Bearer ${token}` },
+                  }
+                );
+              }}
             />{" "}
             books
           </h1>

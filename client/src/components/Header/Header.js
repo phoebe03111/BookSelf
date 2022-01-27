@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import logoImg from "../../assets/images/logo.png";
 import menuIcon from "../../assets/images/icons/menu-bars.svg";
 import menuCloseIcon from "../../assets/images/icons/menu-close.svg";
@@ -9,6 +9,8 @@ import "./Header.scss";
 
 function Header() {
   const [showMenu, setshowMenu] = useState(false);
+
+  const history = useHistory();
 
   const handleToggle = () => {
     setshowMenu(!showMenu);
@@ -49,7 +51,10 @@ function Header() {
             type="submit"
             color="success"
             variant="contained"
-            onClick={() => sessionStorage.removeItem("token")}
+            onClick={() => {
+              sessionStorage.removeItem("token");
+              history.push("/");
+            }}
           >
             Logout
           </Button>
