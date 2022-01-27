@@ -5,7 +5,6 @@ import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import Book from "../../components/Book/Book";
 import Book2 from "../../components/Book2/Book2";
 import { Button } from "@mui/material";
 import "./BooksPage.scss";

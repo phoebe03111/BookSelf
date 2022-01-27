@@ -8,7 +8,7 @@ function NavModal({ onToggle }) {
       <Link to="/books" onClick={onToggle}>
         <div className="nav__item">Bookshelf</div>
       </Link>
-      <Link to="/tracker" onClick={onToggle}>
+      <Link to="/books/tracker" onClick={onToggle}>
         <div className="nav__item">Tracker</div>
       </Link>
       <Link to="/about" onClick={onToggle}>

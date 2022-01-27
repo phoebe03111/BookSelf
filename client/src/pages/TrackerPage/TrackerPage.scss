@@ -1,0 +1,42 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.tracker {
+  @include column;
+  gap: 1rem;
+  margin-top: 7rem;
+  margin-bottom: 1.5rem;
+  width: 80vw;
+
+  &__goal {
+    @include white-bg;
+    @include column;
+    gap: 1rem;
+    width: 70vw;
+  }
+
+  &__text {
+    @include center;
+    gap: 1rem;
+    font-size: 1rem;
+  }
+
+  &__font {
+    font-size: 1.5rem;
+    line-height: 1.5;
+
+    @include desktop {
+      font-size: 2rem;
+    }
+  }
+
+  &__img {
+    width: 4rem;
+  }
+
+  &__progress-bar {
+    @include center;
+    width: 100%;
+  }
+}

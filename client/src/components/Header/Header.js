@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logoImg from "../../assets/images/logo-1.png";
+import logoImg from "../../assets/images/logo.png";
 import menuIcon from "../../assets/images/icons/menu-bars.svg";
 import menuCloseIcon from "../../assets/images/icons/menu-close.svg";
 import "./Header.scss";

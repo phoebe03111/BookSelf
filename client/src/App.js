@@ -8,6 +8,7 @@ import "./styles/App.scss";
 import BooksDemoPage from "./pages/BooksDemoPage/BooksDemoPage";
 import AddBookForm from "./pages/AddBookForm/AddBookForm";
 import EditBookPage from "./pages/EditBookPage/EditBookPage";
+import TrackerPage from "./pages/TrackerPage/TrackerPage";
 
 const theme = createTheme({
   palette: {
@@ -26,6 +27,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
+          <Route path="/books/tracker" component={TrackerPage} />
           <Route path="/books/add/:category" component={AddBookForm} />
           <Route path="/books/:bookId/edit" component={EditBookPage} />
           <Route path="/books/:bookId" component={BookDetailPage} />

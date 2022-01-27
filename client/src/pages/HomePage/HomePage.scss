@@ -13,7 +13,7 @@
 
 .hero {
   @include section-padding;
-  @include bg-overlay("../../assets/images/hero-1.jpeg");
+  @include bg-overlay("../../assets/images/hero.jpeg");
   background-size: cover;
   height: calc(100vh - 5rem);
   width: 100vw;
