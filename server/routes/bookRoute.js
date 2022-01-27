@@ -42,16 +42,6 @@ router.route("/:id").get((req, res) => {
     .catch(() => res.status(400).json("Error getting data"));
 });
 
-// POST a new book
-// router.route("/add").post((req, res) => {
-//   knex("Book")
-//     .insert(req.body)
-//     .then((newUserId) => {
-//       res.status(201).json(newUserId);
-//     })
-//     .catch(() => res.status(400).json("Error creating user"));
-// });
-
 // DELETE one book by id
 router.route("/:id").delete((req, res) => {
   knex("Book")
@@ -61,6 +51,17 @@ router.route("/:id").delete((req, res) => {
       res.status(200).json(data);
     })
     .catch(() => res.status(400).json("Error deleting data"));
+});
+
+// PUT (update) a book by id
+router.route("/:id").put((req, res) => {
+  knex("Book")
+    .where({ id: req.params.id })
+    .update(req.body)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch(() => res.status(400).json("Error updating data"));
 });
 
 module.exports = router;

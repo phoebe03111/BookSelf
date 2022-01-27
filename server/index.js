@@ -73,6 +73,8 @@ app.post("/login", (req, res) => {
     .catch(() => res.status(400).json("Error getting data"));
 });
 
+//////////////// Book Routes ////////////////
+
 // GET all the books
 app.get("/books", authorize, (req, res) => {
   const username = req.decoded.name;
@@ -104,5 +106,6 @@ app.post("/books/add", authorize, (req, res) => {
         .catch((err) => res.status(400).json(err));
     });
 });
+
 
 app.listen(PORT, () => console.log(`🚀 Server is launching on ${PORT}`));

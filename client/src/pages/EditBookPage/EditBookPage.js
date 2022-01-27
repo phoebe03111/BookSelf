@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Button } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import "../BookDetailPage/BookDetailPage.scss";
@@ -17,6 +17,9 @@ function EditBookPage() {
   const [publishedInput, setPublishedInput] = useState("");
   const [reviewInput, setReviewInput] = useState("");
   const [quotesInput, setQuotesInput] = useState("");
+  const [ratingInput, setRatingInput] = useState("");
+
+  let history = useHistory();
 
   useEffect(() => {
     const token = sessionStorage.getItem("token");
@@ -35,9 +38,23 @@ function EditBookPage() {
   }, []);
 
   const handleSave = () => {
-    axios.put(`http://localhost:8080/books/${bookId}`, {
-        
-    });
+    axios
+      .put(`http://localhost:8080/books/${bookId}`, {
+        title: titleInput,
+        author: authorInput,
+        published: publishedInput,
+        // status: 2,
+        rating: ratingInput,
+        review: reviewInput,
+      })
+      .then((res) => {
+        history.push(`/books/${bookId}`);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const onChangeRating = (value) => {
+    setRatingInput(value);
   };
 
   const { image, title, rating } = bookData;
@@ -85,7 +102,10 @@ function EditBookPage() {
               <BookStatus />
               <div>
                 <h3 className="book__info-item">Rating:</h3>
-                <BookRatingChange rating={rating} />
+                <BookRatingChange
+                  rating={rating}
+                  onChangeRating={onChangeRating}
+                />
               </div>
             </div>
           </div>
