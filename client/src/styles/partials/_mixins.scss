@@ -26,13 +26,25 @@
 }
 
 @mixin white-bg {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 1rem 1.5rem;
   border-radius: 20px;
 
   @include desktop {
     padding: 1.5rem 3.5rem;
   }
+}
+
+@mixin input-style {
+  padding: 0.2rem 0.5rem;
+  margin: 0.2rem;
+  border: none;
+  background-color: lightgray;
+  line-height: 1.5;
+  font-size: 1.1rem;
+  font-family: inherit;
+  color: inherit;
+  border-radius: 4px;
 }
 
 // Breakpoints

@@ -32,27 +32,6 @@ function authorize(req, res, next) {
   });
 }
 
-// GET all books
-// router.route("/").get(authorize, (req, res) => {
-//   const username = req.decoded.name;
-
-//   knex("User")
-//     .then((data) => {
-//       const usersData = data;
-//       const targetUser = usersData.filter((user) => user.username === username);
-
-//       res.json(targetUser);
-//     })
-//     .catch(() => res.status(400).json("Error getting data"));
-//   })
-
-// knex("Book")
-//   .then((data) => {
-//     res.status(200).json(data);
-//   })
-//   .catch(() => res.status(400).json("Error getting data"));
-// });
-
 // GET single book by id
 router.route("/:id").get((req, res) => {
   knex("Book")
@@ -73,6 +52,7 @@ router.route("/:id").get((req, res) => {
 //     .catch(() => res.status(400).json("Error creating user"));
 // });
 
+// DELETE one book by id
 router.route("/:id").delete((req, res) => {
   knex("Book")
     .where({ id: req.params.id })

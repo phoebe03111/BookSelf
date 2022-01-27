@@ -68,11 +68,12 @@ app.post("/login", (req, res) => {
           expiresIn: "24h",
         });
         res.json({ token });
-      } 
+      }
     })
     .catch(() => res.status(400).json("Error getting data"));
 });
 
+// GET all the books
 app.get("/books", authorize, (req, res) => {
   const username = req.decoded.name;
 
@@ -81,12 +82,12 @@ app.get("/books", authorize, (req, res) => {
     .join("user", "user.id", "book.userId")
     .where({ username: username })
     .then((data) => {
-      const usersData = data;
       res.json(data);
     })
     .catch(() => res.status(400).json("Error getting data"));
 });
 
+// POST a new book
 app.post("/books/add", authorize, (req, res) => {
   let body = req.body;
 
@@ -105,53 +106,3 @@ app.post("/books/add", authorize, (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`🚀 Server is launching on ${PORT}`));
-
-// const readFile = () => {
-//   const userData = fs.readFileSync("./data/users.json");
-//   return JSON.parse(userData);
-// };
-
-// const writeFile = (userData) => {
-//   fs.writeFileSync("./data/users.json", JSON.stringify(userData, null, 2));
-// };
-
-// app.post("/signup", (req, res) => {
-//   const { username, email, password } = req.body;
-
-//   const usersData = readFile();
-
-//   const newUser = {
-//     username,
-//     email,
-//     password,
-//   };
-
-//   usersData.push(newUser);
-//   writeFile(usersData);
-
-//   res.json({ success: "true" });
-// });
-
-// app.post("/login", (req, res) => {
-//   const { username, password } = req.body;
-
-//   const usersData = readFile();
-//   usersData.filter((user) => {
-//     // If user is found and password is correct => create TOKEN and send it back to the client
-//     if (user.username === username && user.password === password) {
-//       const token = jwt.sign({ name: user.username }, JWT_SECRET, {
-//         expiresIn: "24h",
-//       });
-//       res.json({ token });
-//     }
-//   });
-// });
-
-// app.get("/books", authorize, (req, res) => {
-//   const username = req.decoded.name;
-//   const usersData = readFile();
-
-//   const targetUser = usersData.filter((user) => user.username === username);
-
-//   res.json(targetUser);
-// });

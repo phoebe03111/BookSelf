@@ -21,7 +21,7 @@ function BooksPage() {
     // Grab token from sessionStorage
     const token = sessionStorage.getItem("token");
     axios
-      .get("http://localhost:8080/books", {
+      .get('http://localhost:8080/books', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -58,9 +58,6 @@ function BooksPage() {
           </Button>
         </div>
         <div className="books__group">
-          {/* {userInfo.books.reading.map((book) => {
-            return <Book key={book.id} book={book} />;
-          })} */}
           {books
             .filter((book) => book.status === 0)
             .map((book) => {
@@ -87,9 +84,6 @@ function BooksPage() {
           </Button>
         </div>
         <div className="books__group">
-          {/* {userInfo.books.toRead.map((book) => {
-            return <Book key={book.id} book={book} />;
-          })} */}
           {books
             .filter((book) => book.status === 1)
             .map((book) => {
@@ -115,9 +109,6 @@ function BooksPage() {
           </Button>
         </div>
         <div className="books__group">
-          {/* {userInfo.books.finished.map((book) => {
-            return <Book key={book.id} book={book} />;
-          })} */}
           {books
             .filter((book) => book.status === 2)
             .map((book) => {
