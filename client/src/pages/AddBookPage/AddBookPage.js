@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import SearchResult from "../../components/SearchResult/SearchResult";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "./AddBookPage.scss";
+import { Button } from "@mui/material";
+import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -46,12 +47,65 @@ function AddBookForm() {
       </div>
 
       <div className="add-book__form">
-        <h2 style={{ marginTop: "1rem" }}>
-          Can not find your book? Add it here.
+        <h2 className="add-book__heading">
+          Cannot find your book? Add it here.
         </h2>
-        {/* <form>
-          <TextField id="filled-basic" label="Title" variant="filled" />
-        </form> */}
+
+        <div className="add-book__upload">
+          <Button
+            type="submit"
+            color="primary"
+            variant="contained"
+            startIcon={<DriveFolderUploadIcon />}
+          >
+            Upload image
+          </Button>
+        </div>
+
+        <form className="form">
+          <TextField
+            id="filled-basic"
+            label="Title"
+            variant="filled"
+            size="small"
+            fullWidth
+          />
+          <TextField
+            id="filled-basic"
+            label="Author"
+            variant="filled"
+            size="small"
+            fullWidth
+          />
+          <TextField
+            id="filled-basic"
+            label="Published date"
+            variant="filled"
+            size="small"
+            fullWidth
+          />
+          <TextField
+            id="filled-basic"
+            label="My review"
+            variant="filled"
+            size="small"
+            fullWidth
+            multiline
+            rows={4}
+          />
+          <TextField
+            id="filled-basic"
+            label="Favorite quotes"
+            variant="filled"
+            size="small"
+            fullWidth
+            multiline
+            rows={4}
+          />
+          <Button type="submit" color="primary" variant="contained">
+            Submit
+          </Button>
+        </form>
       </div>
     </main>
   );
