@@ -56,6 +56,10 @@
     display: flex;
     gap: 2rem;
     flex-direction: column;
+
+    @include tablet {
+      padding-bottom: 2rem;
+    }
   }
 
   &__info {
@@ -79,7 +83,11 @@
 }
 
 .button-group {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
+  margin: 0 auto;
+
+  @include tablet {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
 }
