@@ -37,7 +37,8 @@ function SearchResult({ result }) {
           description: description,
           status: statusVal,
           rating: 0,
-          review: "",
+          quotes: "N/A",
+          review: "N/A",
           googleId: id,
         },
         {

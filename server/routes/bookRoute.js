@@ -61,7 +61,7 @@ router.route("/:id").put((req, res) => {
     .then((data) => {
       res.status(200).json(data);
     })
-    .catch(() => res.status(400).json("Error updating data"));
+    .catch((ex) => res.status(400).json(ex));
 });
 
 module.exports = router;

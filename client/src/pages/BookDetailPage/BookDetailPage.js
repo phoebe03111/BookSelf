@@ -29,7 +29,7 @@ function BookDetailPage() {
       .catch((err) => console.log(err));
   }, []);
 
-  const { image, title, author, published, status, rating, review } = bookData;
+  const { image, title, author, published, quotes, rating, review } = bookData;
 
   return (
     <main className="book-detail">
@@ -64,8 +64,7 @@ function BookDetailPage() {
             <div>
               <h3>Favorite quotes</h3>
               <ul>
-                <Quote />
-                <Quote />
+                <Quote quotes={quotes} />
               </ul>
             </div>
 

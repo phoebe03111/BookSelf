@@ -9,6 +9,7 @@
 
   &__textarea {
     width: 100%;
+    min-width: 10rem;
     height: 10rem;
     padding: 1rem;
     font-size: 1rem;
@@ -17,8 +18,12 @@
     font-family: inherit;
     border-radius: 4px;
     color: inherit;
-    background-color:lightgray;
+    background-color: lightgray;
     border: none;
+
+    @include tablet {
+      min-width: 30rem;
+    }
 
     &:focus {
       outline: none;

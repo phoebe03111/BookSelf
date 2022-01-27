@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import "../BookDetailPage/BookDetailPage.scss";
 import "./EditBookPage.scss";
-import Quote from "../../components/Quote/Quote";
 import BookStatus from "../../components/BookStatus/BookStatus";
 import BookRatingChange from "../../components/BookRatingChange/BookRatingChange";
 
@@ -17,7 +16,7 @@ function EditBookPage() {
   const [publishedInput, setPublishedInput] = useState("");
   const [reviewInput, setReviewInput] = useState("");
   const [quotesInput, setQuotesInput] = useState("");
-  const [ratingInput, setRatingInput] = useState("");
+  const [ratingInput, setRatingInput] = useState(0);
 
   let history = useHistory();
 
@@ -33,6 +32,7 @@ function EditBookPage() {
         setAuthorInput(res.data[0].author);
         setPublishedInput(res.data[0].published);
         setReviewInput(res.data[0].review);
+        setQuotesInput(res.data[0].quotes);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -43,8 +43,7 @@ function EditBookPage() {
         title: titleInput,
         author: authorInput,
         published: publishedInput,
-        // status: 2,
-        rating: ratingInput,
+        quotes: quotesInput,
         review: reviewInput,
       })
       .then((res) => {
@@ -104,6 +103,7 @@ function EditBookPage() {
                 <h3 className="book__info-item">Rating:</h3>
                 <BookRatingChange
                   rating={rating}
+                  bookId={bookId}
                   onChangeRating={onChangeRating}
                 />
               </div>
@@ -121,11 +121,12 @@ function EditBookPage() {
             </div>
 
             <div>
-              <h3>Favorite quotes</h3>
-              <ul>
-                <Quote />
-                <Quote />
-              </ul>
+              <h3 className="book__info-item">Favorite quotes</h3>
+              <textarea
+                value={quotesInput}
+                onChange={(e) => setQuotesInput(e.target.value)}
+                className="book__textarea"
+              />
             </div>
 
             <div className="button-group">
