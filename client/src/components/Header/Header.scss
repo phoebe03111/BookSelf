@@ -22,32 +22,31 @@
   }
 
   &__nav {
-    display: flex;
+    display: none;
+
+    @include tablet {
+      display: flex;
+    }
+
+    &-list {
+      display: flex;
+      gap: 1.7rem;
+    }
+
+    &-item {
+      color: white;
+      font-weight: bold;
+      font-size: 1.7rem;
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 1px;
+    }
   }
 
-  &__menu {
-    position: fixed;
-    top: 5rem;
-    left: 0;
-    background-color: $color-beige;
-    width: 100vw;
-    height: 10vh;
-    z-index: 50;
-    box-shadow: $box-shadow;
+  &__nav--mobile {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    // transition: all .5s ease-in-out;
 
-    &__item {
-      background-color: $color-green;
-      color: white;
-      padding: 1rem;
-      width: 8rem;
-      border-radius: 10px;
-      font-size: 1rem;
-      text-align: center;
+    @include tablet {
+      display: none;
     }
   }
 }
