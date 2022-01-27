@@ -59,18 +59,16 @@ app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   knex("User")
+    .where({ username: username })
     .then((data) => {
-      const usersData = data;
+      const usersData = data[0];
 
-      usersData.filter((user) => {
-        // If user is found and password is correct => create TOKEN and send it back to the client
-        if (user.username && user.password === password) {
-          const token = jwt.sign({ name: user.username }, JWT_SECRET, {
-            expiresIn: "24h",
-          });
-          res.json({ token });
-        }
-      });
+      if (usersData.password === password) {
+        const token = jwt.sign({ name: username }, JWT_SECRET, {
+          expiresIn: "24h",
+        });
+        res.json({ token });
+      } 
     })
     .catch(() => res.status(400).json("Error getting data"));
 });
@@ -79,7 +77,7 @@ app.get("/books", authorize, (req, res) => {
   const username = req.decoded.name;
 
   knex("Book")
-    .select(['book.*'])
+    .select(["book.*"])
     .join("user", "user.id", "book.userId")
     .where({ username: username })
     .then((data) => {
@@ -91,27 +89,22 @@ app.get("/books", authorize, (req, res) => {
 
 app.post("/books/add", authorize, (req, res) => {
   let body = req.body;
-  
+
   knex("User")
     .where({ username: req.decoded.name })
     .then((data) => {
       body.userId = data[0].id;
 
       knex("Book")
-      .insert(body)
-      .then((newUserId) => {
-        res.status(201).json(newUserId);
-
-      })
-      .catch((err) => res.status(400).json(err));
+        .insert(body)
+        .then((newUserId) => {
+          res.status(201).json(newUserId);
+        })
+        .catch((err) => res.status(400).json(err));
     });
 });
 
 app.listen(PORT, () => console.log(`🚀 Server is launching on ${PORT}`));
-
-
-
-
 
 // const readFile = () => {
 //   const userData = fs.readFileSync("./data/users.json");
@@ -121,7 +114,6 @@ app.listen(PORT, () => console.log(`🚀 Server is launching on ${PORT}`));
 // const writeFile = (userData) => {
 //   fs.writeFileSync("./data/users.json", JSON.stringify(userData, null, 2));
 // };
-
 
 // app.post("/signup", (req, res) => {
 //   const { username, email, password } = req.body;
@@ -140,7 +132,6 @@ app.listen(PORT, () => console.log(`🚀 Server is launching on ${PORT}`));
 //   res.json({ success: "true" });
 // });
 
-
 // app.post("/login", (req, res) => {
 //   const { username, password } = req.body;
 
@@ -155,7 +146,6 @@ app.listen(PORT, () => console.log(`🚀 Server is launching on ${PORT}`));
 //     }
 //   });
 // });
-
 
 // app.get("/books", authorize, (req, res) => {
 //   const username = req.decoded.name;

@@ -10,6 +10,10 @@
   border-bottom: 1px solid lightgray;
   position: relative;
 
+  &__title {
+    max-width: 90%;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;

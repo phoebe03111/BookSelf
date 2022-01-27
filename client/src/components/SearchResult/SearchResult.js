@@ -14,13 +14,13 @@ function SearchResult({ result }) {
   const { title, authors, publishedDate, imageLinks, description } =
   result.volumeInfo;
 
-  let status = 0;
+  let statusVal = 0;
   if (params.category === 'addCurrent') {
-    status = 0
+    statusVal = 0
   } else if (params.category === 'addToRead') {
-    status = 1
+    statusVal = 1
   } else {
-    status = 2
+    statusVal = 2
   } 
 
   const handlePlus = () => {
@@ -31,7 +31,7 @@ function SearchResult({ result }) {
         published: publishedDate,
         image: imageLinks.thumbnail,
         description: description,
-        status: status,
+        status: statusVal,
         rating: 0,
         review: "",
         googleId: id,
@@ -47,7 +47,7 @@ function SearchResult({ result }) {
       <Book book={result} />
 
       <div className="result__info">
-        <h4>Title: {title}</h4>
+        <h4 className="result__title">Title: {title}</h4>
         <h4>
           Author:{" "}
           {result.volumeInfo.authors &&

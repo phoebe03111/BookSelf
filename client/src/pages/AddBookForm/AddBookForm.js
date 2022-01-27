@@ -31,7 +31,7 @@ function AddBookForm() {
         <form className="add-book__search" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="search book title..."
+            placeholder="search book title or author..."
             className="add-book__input"
             name="book"
           />
@@ -46,9 +46,12 @@ function AddBookForm() {
       </div>
 
       <div className="add-book__form">
-        <form>
+        <h2 style={{ marginTop: "1rem" }}>
+          Can not find your book? Add it here.
+        </h2>
+        {/* <form>
           <TextField id="filled-basic" label="Title" variant="filled" />
-        </form>
+        </form> */}
       </div>
     </main>
   );

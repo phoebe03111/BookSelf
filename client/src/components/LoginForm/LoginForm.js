@@ -45,7 +45,6 @@ function LoginForm() {
         sessionStorage.removeItem("token");
         sessionStorage.setItem("token", res.data.token);
         history.push("/books");
-        // setIsLoggedIn(true);
       })
       .catch((err) => {
         console.log(err);
@@ -161,6 +160,7 @@ function LoginForm() {
               id="outlined-basic"
               label="Password"
               variant="outlined"
+              type="password"
               fullWidth
               value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}
@@ -188,14 +188,16 @@ function LoginForm() {
             Signup
           </Button>
         </p>
-        <Button
+
+        {/* <Button
           color="primary"
           variant="contained"
           endIcon={<KeyboardArrowRightIcon />}
           onClick={handleLogout}
+          style={{ marginTop: "5rem" }}
         >
           Log out
-        </Button>
+        </Button> */}
       </div>
     );
   };

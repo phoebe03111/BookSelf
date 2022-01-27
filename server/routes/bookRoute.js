@@ -46,13 +46,11 @@ function authorize(req, res, next) {
 //     .catch(() => res.status(400).json("Error getting data"));
 //   })
 
-
-
-  // knex("Book")
-  //   .then((data) => {
-  //     res.status(200).json(data);
-  //   })
-  //   .catch(() => res.status(400).json("Error getting data"));
+// knex("Book")
+//   .then((data) => {
+//     res.status(200).json(data);
+//   })
+//   .catch(() => res.status(400).json("Error getting data"));
 // });
 
 // GET single book by id
@@ -74,5 +72,15 @@ router.route("/:id").get((req, res) => {
 //     })
 //     .catch(() => res.status(400).json("Error creating user"));
 // });
+
+router.route("/:id").delete((req, res) => {
+  knex("Book")
+    .where({ id: req.params.id })
+    .del()
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch(() => res.status(400).json("Error deleting data"));
+});
 
 module.exports = router;

@@ -11,25 +11,27 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import Rating from "@mui/material/Rating";
 import "./BookDetailPage.scss";
-
-const API_URL = process.env.REACT_APP_API_URL;
-const API_KEY = process.env.REACT_APP_API_KEY;
+import ConfirmDeleteModal from "../../components/ConfirmDeleteModal/ConfirmDeleteModal";
 
 function BookDetailPage() {
   const { bookId } = useParams();
   const [bookData, setBookData] = useState({ render: 0 });
   const [value, setValue] = useState(3);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
+    const token = sessionStorage.getItem("token");
     axios
-      .get(`${API_URL}/volumes/${bookId}?key=${API_KEY}`)
+      .get(`http://localhost:8080/books/${bookId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
-        setBookData(res.data.volumeInfo);
+        setBookData(res.data[0]);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const { title, authors, publishedDate } = bookData;
+  const { image, title, author, published } = bookData;
 
   return (
     <main className="book-detail">
@@ -39,17 +41,14 @@ function BookDetailPage() {
         <div className="book-detail__container">
           <div className="book__top">
             <div>
-              <img
-                className="book__image"
-                src={bookData.imageLinks.thumbnail}
-              />
+              <img className="book__image" src={image} alt={title} />
               <div className="book__image-bg"></div>
             </div>
 
             <div className="book__info">
               <h3 className="book__info-item">Title: {title}</h3>
-              <h3>Author: {authors[0]}</h3>
-              <h3 className="book__info-item">Published: {publishedDate}</h3>
+              <h3>Author: {author}</h3>
+              <h3 className="book__info-item">Published: {published}</h3>
               <FormControl>
                 <h3 className="book__info-item">Status:</h3>
                 <RadioGroup
@@ -136,10 +135,15 @@ function BookDetailPage() {
               <Button color="primary" endIcon={<ModeEditIcon />}>
                 edit
               </Button>
-              <Button color="secondary" endIcon={<DeleteOutlineIcon />}>
+              <Button
+                color="secondary"
+                endIcon={<DeleteOutlineIcon />}
+                onClick={() => setOpenModal(true)}
+              >
                 remove
               </Button>
             </ButtonGroup>
+            {openModal && <ConfirmDeleteModal bookId={bookId} />}
           </div>
         </div>
       )}
