@@ -5,11 +5,12 @@ import TextField from "@mui/material/TextField";
 import "./AddBookPage.scss";
 import { Button } from "@mui/material";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+import AddBookForm from "../../components/AddBookForm/AddBookForm";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-function AddBookForm() {
+function AddBookPage() {
   const [results, setResults] = useState([]);
 
   const handleSubmit = (e) => {
@@ -51,18 +52,19 @@ function AddBookForm() {
           Cannot find your book? Add it here.
         </h2>
 
-        <div className="add-book__upload">
-          <Button
-            type="submit"
-            color="primary"
-            variant="contained"
-            startIcon={<DriveFolderUploadIcon />}
-          >
-            Upload image
-          </Button>
-        </div>
+        <AddBookForm />
+        {/* <form className="form">
+          <div className="add-book__upload">
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              startIcon={<DriveFolderUploadIcon />}
+            >
+              Upload image
+            </Button>
+          </div>
 
-        <form className="form">
           <TextField
             id="filled-basic"
             label="Title"
@@ -105,10 +107,10 @@ function AddBookForm() {
           <Button type="submit" color="primary" variant="contained">
             Submit
           </Button>
-        </form>
+        </form> */}
       </div>
     </main>
   );
 }
 
-export default AddBookForm;
+export default AddBookPage;
