@@ -14,8 +14,6 @@ function BookStatus({ status }) {
     value = "finished";
   }
 
-  console.log(status)
-
   return (
     <div>
       <FormControl>

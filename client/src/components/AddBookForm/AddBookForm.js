@@ -59,8 +59,6 @@ function AddBookForm() {
       .catch((err) => console.log(err));
   };
 
-  console.log(file);
-
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="add-book__upload">

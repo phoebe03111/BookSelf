@@ -33,8 +33,6 @@ function BookDetailPage() {
     setOpenModal(open)
   };
 
-  console.log(openModal);
-
   const { image, title, author, published, quotes, rating, review, status } =
     bookData;
 

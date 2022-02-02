@@ -63,7 +63,6 @@ app.post("/signup", (req, res) => {
         return knex("User").where({ username: req.body.username });
       })
       .then((newUser) => {
-        console.log("New User:", newUser);
 
         const jwtToken = jwt.sign(
           {
