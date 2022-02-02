@@ -38,7 +38,7 @@ function AddBookForm() {
 
     axios
       .post(
-        "http://localhost:8080/books/add",
+        "https://book-self.herokuapp.com/books/add",
         {
           title: titleValue,
           author: authorValue,

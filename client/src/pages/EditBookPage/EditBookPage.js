@@ -24,7 +24,7 @@ function EditBookPage() {
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     axios
-      .get(`http://localhost:8080/books/${bookId}`, {
+      .get(`https://book-self.herokuapp.com/books/${bookId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -40,7 +40,7 @@ function EditBookPage() {
 
   const handleSave = () => {
     axios
-      .put(`http://localhost:8080/books/${bookId}`, {
+      .put(`https://book-self.herokuapp.com/books/${bookId}`, {
         title: titleInput,
         author: authorInput,
         published: publishedInput,

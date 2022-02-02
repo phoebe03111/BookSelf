@@ -15,7 +15,7 @@ function ConfirmDeleteModal({ bookId, onDelete }) {
   const handleDelete = () => {
     const token = sessionStorage.getItem("token");
     axios
-      .delete(`http://localhost:8080/books/${bookId}`, {
+      .delete(`https://book-self.herokuapp.com/books/${bookId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {

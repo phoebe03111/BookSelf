@@ -12,7 +12,7 @@ function BookStatus({ status, bookId, onChangeStatus }) {
     setValue(newValue);
     onChangeStatus(newValue);
     axios
-      .put(`http://localhost:8080/books/${bookId}`, {
+      .put(`https://book-self.herokuapp.com/books/${bookId}`, {
         status: newValue,
       })
       .then((res) => {
