@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import "../BookDetailPage/BookDetailPage.scss";
 import "./EditBookPage.scss";
-import BookStatus from "../../components/BookStatus/BookStatus";
+import BookStatusChange from "../../components/BookStatusChange/BookStatusChange";
 import BookRatingChange from "../../components/BookRatingChange/BookRatingChange";
 
 function EditBookPage() {
@@ -17,6 +17,7 @@ function EditBookPage() {
   const [reviewInput, setReviewInput] = useState("");
   const [quotesInput, setQuotesInput] = useState("");
   const [ratingInput, setRatingInput] = useState(0);
+  const [statusInput, setStatusInput] = useState("");
 
   let history = useHistory();
 
@@ -56,7 +57,11 @@ function EditBookPage() {
     setRatingInput(value);
   };
 
-  const { image, title, rating } = bookData;
+  const onChangeStatus = (value) => {
+    setStatusInput(value);
+  };
+
+  const { image, title, rating, status } = bookData;
 
   return (
     <main className="book-detail">
@@ -98,7 +103,11 @@ function EditBookPage() {
                   className="book__input"
                 />
               </h3>
-              <BookStatus />
+              <BookStatusChange
+                status={status}
+                bookId={bookId}
+                onChangeStatus={onChangeStatus}
+              />
               <div>
                 <h3 className="book__info-item">Rating:</h3>
                 <BookRatingChange

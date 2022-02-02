@@ -4,9 +4,10 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 import axios from "axios";
+import "./AddBookForm.scss";
 
 function AddBookForm() {
-  const [file, setFile] = useState({ preview: "", raw: "" });
+  const [file, setFile] = useState("");
   const [titleValue, setTitleValue] = useState("");
   const [authorValue, setAuthorValue] = useState("");
   const [publishedValue, setPublishedValue] = useState("");
@@ -27,10 +28,7 @@ function AddBookForm() {
 
   const handleChange = (e) => {
     if (e.target.files.length) {
-      setFile({
-        preview: URL.createObjectURL(e.target.files[0]),
-        raw: e.target.files[0],
-      });
+      setFile(URL.createObjectURL(e.target.files[0]));
     }
   };
 
@@ -45,7 +43,7 @@ function AddBookForm() {
           title: titleValue,
           author: authorValue,
           published: publishedValue,
-          image: file.preview,
+          image: file,
           status: statusVal,
           rating: 0,
           quotes: quotesValue,
@@ -56,27 +54,24 @@ function AddBookForm() {
         }
       )
       .then(() => {
-        console.log(file);
         history.push(`/books`);
       })
       .catch((err) => console.log(err));
   };
 
+  console.log(file);
+
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="add-book__upload">
-        {/* <input
-          type="file"
-          onChange={(e) =>
-            setFile({ preview: URL.createObjectURL(e.target.files[0]) })
-          }
-        /> */}
-
         <label htmlFor="upload-button">
-          {file.preview ? (
-            <img src={file.preview} alt="book" width="300" />
+          {file ? (
+            <img src={file} alt="book" width="300" />
           ) : (
-            <h5>Upload your photo</h5>
+            <p className="upload-button">
+              <DriveFolderUploadIcon />
+              <span>Upload book image</span>
+            </p>
           )}
         </label>
         <input
@@ -85,15 +80,6 @@ function AddBookForm() {
           onChange={handleChange}
           id="upload-button"
         />
-
-        {/* <Button
-          type="submit"
-          color="primary"
-          variant="contained"
-          startIcon={<DriveFolderUploadIcon />}
-        >
-          Upload image
-        </Button> */}
       </div>
 
       <TextField

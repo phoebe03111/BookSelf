@@ -29,7 +29,8 @@ function BookDetailPage() {
       .catch((err) => console.log(err));
   }, []);
 
-  const { image, title, author, published, quotes, rating, review } = bookData;
+  const { image, title, author, published, quotes, rating, review, status } =
+    bookData;
 
   return (
     <main className="book-detail">
@@ -47,7 +48,7 @@ function BookDetailPage() {
               <h3 className="book__info-item">Title: {title}</h3>
               <h3>Author: {author}</h3>
               <h3 className="book__info-item">Published: {published}</h3>
-              <BookStatus />
+              <BookStatus status={status} />
               <div>
                 <h3 className="book__info-item">Rating:</h3>
                 <BookRating rating={rating} />

@@ -1,48 +1,51 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 
-function BookStatus({ status }) {
-  let value;
-  if (status === 0) {
-    value = "current";
-  } else if (status === 1) {
-    value = "to-read";
-  } else {
-    value = "finished";
-  }
+function BookStatus({ status, bookId, onChangeStatus }) {
+  const [value, setValue] = useState(status);
 
-  console.log(status)
-
+  const handleChangeStatus = (event, newValue) => {
+    setValue(newValue);
+    onChangeStatus(newValue);
+    axios
+      .put(`http://localhost:8080/books/${bookId}`, {
+        status: newValue,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+  
   return (
     <div>
       <FormControl>
         <h3 className="book__info-item">Status:</h3>
         <RadioGroup
           aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue={value}
+          value={value}
+          onChange={handleChangeStatus}
           name="radio-buttons-group"
           row
         >
           <FormControlLabel
-            value="current"
+            value="0"
             control={<Radio />}
             label="Currently reading"
-            disabled={status !== 0 && true}
           />
           <FormControlLabel
-            value="to-read"
+            value="1"
             control={<Radio />}
             label="Want to read"
-            disabled={status !== 1 && true}
           />
           <FormControlLabel
-            value="finished"
+            value="2"
             control={<Radio />}
             label="Finished reading"
-            disabled={status !== 2 && true}
           />
         </RadioGroup>
       </FormControl>
