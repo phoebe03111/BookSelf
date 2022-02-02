@@ -7,7 +7,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
 import "./ConfirmDeleteModal.scss";
 
-function ConfirmDeleteModal({ bookId }) {
+function ConfirmDeleteModal({ bookId, onDelete }) {
   const [open, setOpen] = useState(true);
 
   let history = useHistory();
@@ -26,6 +26,7 @@ function ConfirmDeleteModal({ bookId }) {
 
   const handleClose = () => {
     setOpen(false);
+    onDelete(false)
   };
 
   return (

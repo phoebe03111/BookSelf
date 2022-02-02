@@ -12,13 +12,18 @@ const signupUrl = `${baseUrl}/signup`;
 function LoginForm() {
   const [isSignedUp, setIsSignedUp] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [loginUsernameError, setLoginUsernameError] = useState(false);
   const [loginPasswordError, setLoginPasswordError] = useState(false);
+
   const [signupUsername, setSignupUsername] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
+  const [signupUsernameError, setSignupUsernameError] = useState(false);
+  const [signupEmailError, setSignupEmailError] = useState(false);
+  const [signupPasswordError, setSignupPasswordError] = useState(false);
 
   let history = useHistory();
 
@@ -54,6 +59,22 @@ function LoginForm() {
   const handleSignup = (e) => {
     e.preventDefault();
 
+    setSignupUsernameError(false);
+    setSignupEmailError(false);
+    setSignupPasswordError(false);
+
+    if (!signupUsername) {
+      setSignupUsernameError(true);
+    }
+
+    if (!signupEmail) {
+      setSignupEmailError(true);
+    }
+
+    if (!signupPassword) {
+      setSignupPasswordError(true);
+    }
+
     axios
       .post(signupUrl, {
         username: signupUsername,
@@ -61,6 +82,7 @@ function LoginForm() {
         password: signupPassword,
       })
       .then((res) => {
+        setIsLoggedIn(false);
         setIsSignedUp(true);
       })
       .catch((err) => console.log(err));
@@ -80,6 +102,7 @@ function LoginForm() {
               value={signupUsername}
               onChange={(e) => setSignupUsername(e.target.value)}
               autoComplete="off"
+              error={signupUsernameError}
             />
           </div>
 
@@ -92,6 +115,7 @@ function LoginForm() {
               value={signupEmail}
               onChange={(e) => setSignupEmail(e.target.value)}
               autoComplete="off"
+              error={signupEmailError}
             />
           </div>
 
@@ -105,6 +129,7 @@ function LoginForm() {
               value={signupPassword}
               onChange={(e) => setSignupPassword(e.target.value)}
               autoComplete="off"
+              error={signupPasswordError}
             />
           </div>
 
@@ -113,19 +138,20 @@ function LoginForm() {
             color="primary"
             variant="contained"
             endIcon={<KeyboardArrowRightIcon />}
-            onClick={() => setIsSignedUp(false)}
           >
             Signup
           </Button>
         </form>
-
         <p className="redirect">
           Already have an account?{" "}
           <Button
             color="primary"
             variant="contained"
             endIcon={<KeyboardArrowRightIcon />}
-            onClick={() => setIsLoggedIn(false)}
+            onClick={() => {
+              setIsLoggedIn(false);
+              setIsSignedUp(true);
+            }}
           >
             Login
           </Button>
@@ -179,7 +205,10 @@ function LoginForm() {
             color="primary"
             variant="contained"
             endIcon={<KeyboardArrowRightIcon />}
-            onClick={() => setIsSignedUp(false)}
+            onClick={() => {
+              setIsLoggedIn(true)
+              setIsSignedUp(false)
+            }}
           >
             Signup
           </Button>
@@ -188,8 +217,11 @@ function LoginForm() {
     );
   };
 
-  if (!isSignedUp) return renderSignup();
+  console.log('isSignedUp', isSignedUp)
+  console.log('isLoggedIn', isLoggedIn)
+
   if (!isLoggedIn) return renderLogin();
+  if (!isSignedUp) return renderSignup();
 }
 
 export default LoginForm;

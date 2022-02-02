@@ -29,6 +29,12 @@ function BookDetailPage() {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleDelete = (open) => {
+    setOpenModal(open)
+  };
+
+  console.log(openModal);
+
   const { image, title, author, published, quotes, rating, review, status } =
     bookData;
 
@@ -88,7 +94,9 @@ function BookDetailPage() {
               </ButtonGroup>
             </div>
 
-            {openModal && <ConfirmDeleteModal bookId={bookId} />}
+            {openModal && (
+              <ConfirmDeleteModal bookId={bookId} onDelete={handleDelete} />
+            )}
           </div>
         </div>
       )}

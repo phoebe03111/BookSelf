@@ -43,6 +43,7 @@ function authorize(req, res, next) {
 
 // Signup logic
 app.post("/signup", (req, res) => {
+  
   knex("User")
     .insert(req.body)
     .then((newUserId) => {
