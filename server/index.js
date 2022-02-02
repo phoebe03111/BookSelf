@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const knex = require("knex")(require("./knexfile").development);
@@ -178,4 +178,4 @@ app.get("/goal", authorize, (req, res) => {
     .catch(() => res.status(400).json("Error creating user"));
 });
 
-app.listen(PORT, () => console.log(`🚀 Server is launching on ${PORT}`));
+app.listen(process.env.PORT || PORT, () => console.log(`🚀 Server is launching on ${PORT}`));
