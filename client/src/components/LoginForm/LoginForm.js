@@ -217,9 +217,6 @@ function LoginForm() {
     );
   };
 
-  console.log('isSignedUp', isSignedUp)
-  console.log('isLoggedIn', isLoggedIn)
-
   if (!isLoggedIn) return renderLogin();
   if (!isSignedUp) return renderSignup();
 }

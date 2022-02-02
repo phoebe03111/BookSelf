@@ -38,6 +38,7 @@ function TrackerPage() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
+        console.log(res)
         setGoal(res.data[0].goal);
       })
       .catch((err) => console.log(err));
