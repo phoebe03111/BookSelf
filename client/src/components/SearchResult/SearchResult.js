@@ -28,7 +28,7 @@ function SearchResult({ result }) {
   const handlePlus = () => {
     axios
       .post(
-        "https://book-self.herokuapp.com/books/add",
+        "https://bookself-server.herokuapp.com/books/add",
         {
           title: title,
           author: authors[0],

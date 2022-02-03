@@ -5,7 +5,7 @@ import { TextField, Button } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import "./LoginForm.scss";
 
-const baseUrl = "https://book-self.herokuapp.com/";
+const baseUrl = "https://bookself-server.herokuapp.com";
 const loginUrl = `${baseUrl}/login`;
 const signupUrl = `${baseUrl}/signup`;
 

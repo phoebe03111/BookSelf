@@ -20,7 +20,7 @@ function BookDetailPage() {
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     axios
-      .get(`https://book-self.herokuapp.com/books/${bookId}`, {
+      .get(`https://bookself-server.herokuapp.com/books/${bookId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

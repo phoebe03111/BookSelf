@@ -20,7 +20,7 @@ function TrackerPage() {
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     axios
-      .get("https://book-self.herokuapp.com/books", {
+      .get("https://bookself-server.herokuapp.com/books", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -34,7 +34,7 @@ function TrackerPage() {
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     axios
-      .get(`https://book-self.herokuapp.com/goal`, {
+      .get(`https://bookself-server.herokuapp.com/goal`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -74,7 +74,7 @@ function TrackerPage() {
 
                 const token = sessionStorage.getItem("token");
                 axios.put(
-                  `https://book-self.herokuapp.com/users`,
+                  `https://bookself-server.herokuapp.com/users`,
                   {
                     goal: e.target.value,
                   },

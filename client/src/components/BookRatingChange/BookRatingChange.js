@@ -9,7 +9,7 @@ function BookRatingChange({ bookId, rating, onChangeRating }) {
     setValue(newValue);
     onChangeRating(newValue);
     axios
-      .put(`https://book-self.herokuapp.com/books/${bookId}`, {
+      .put(`https://bookself-server.herokuapp.com/books/${bookId}`, {
         rating: newValue,
       })
       .then((res) => {

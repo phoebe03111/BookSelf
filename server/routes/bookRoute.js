@@ -39,7 +39,7 @@ router.route("/:id").get((req, res) => {
     .then((data) => {
       res.status(200).json(data);
     })
-    .catch(() => res.status(400).json("Error getting data"));
+    .catch((err) => res.status(400).send(err));
 });
 
 // DELETE one book by id

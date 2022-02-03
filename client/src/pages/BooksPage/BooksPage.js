@@ -20,7 +20,7 @@ function BooksPage() {
     // Grab token from sessionStorage
     const token = sessionStorage.getItem("token");
     axios
-      .get('https://book-self.herokuapp.com/books', {
+      .get('https://bookself-server.herokuapp.com/books', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
