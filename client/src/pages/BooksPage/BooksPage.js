@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import LoginIcon from "@mui/icons-material/Login";
 import Book2 from "../../components/Book2/Book2";
 import { Button } from "@mui/material";
 import "./BooksPage.scss";
 
 function BooksPage() {
-  const [userInfo, setUserInfo] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [books, setBooks] = useState([]);
 
   const history = useHistory();
-  
+
+  const token = sessionStorage.getItem("token");
+
   useEffect(() => {
-    // Grab token from sessionStorage
-    const token = sessionStorage.getItem("token");
     axios
-      .get('https://bookself-server.herokuapp.com/books', {
+      .get("https://bookself-server.herokuapp.com/books", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -34,12 +34,21 @@ function BooksPage() {
     const category = e.target.name;
     history.push(`/books/add/${category}`);
   };
-  
+
+  if (!token)
+    return (
+      <main className="books">
+        <p className="books__warning">Please log in first</p>
+        <Link to="/">
+          <LoginIcon fontSize="large" />
+        </Link>
+      </main>
+    );
+
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <main className="books">
-      {/* <h1 className="books__heading">Welcome, {userInfo.username}!</h1> */}
       <section className="section currently-reading">
         <div className="section__topic">
           <h2 className="section__title">

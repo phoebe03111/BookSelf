@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import Book2 from "../../components/Book2/Book2";
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import LoginIcon from "@mui/icons-material/Login";
 import bookImg from "../../assets/images/logo-book.png";
 import "./TrackerPage.scss";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
@@ -16,9 +17,10 @@ function TrackerPage() {
   const [goal, setGoal] = useState(1);
   const history = useHistory();
 
+  const token = sessionStorage.getItem("token");
+
   // Get books data
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
     axios
       .get("https://bookself-server.herokuapp.com/books", {
         headers: { Authorization: `Bearer ${token}` },
@@ -50,6 +52,16 @@ function TrackerPage() {
   // Setup progress bar percantage
   let finishedAmount = books.filter((book) => book.status === 2).length;
   let percentage = Math.floor((finishedAmount / goal) * 100);
+
+  if (!token)
+    return (
+      <main className="books">
+         <p className="books__warning">Please log in first</p>
+        <Link to="/">
+          <LoginIcon fontSize="large" />
+        </Link>
+      </main>
+    );
 
   return isLoading ? (
     <p>Loading...</p>

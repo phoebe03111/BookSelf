@@ -25,6 +25,8 @@ function LoginForm() {
   const [signupEmailError, setSignupEmailError] = useState(false);
   const [signupPasswordError, setSignupPasswordError] = useState(false);
 
+  const [loginError, setLoginError] = useState(false);
+
   let history = useHistory();
 
   const handleLogin = (e) => {
@@ -52,7 +54,7 @@ function LoginForm() {
         history.push("/books");
       })
       .catch((err) => {
-        console.log(err);
+        setLoginError(true);
       });
   };
 
@@ -190,6 +192,11 @@ function LoginForm() {
               autoComplete="off"
             />
           </div>
+          {loginError && (
+            <p className="wrong-msg">
+              Wrong username or password. Please try again
+            </p>
+          )}
           <Button
             type="submit"
             color="primary"
@@ -206,8 +213,8 @@ function LoginForm() {
             variant="contained"
             endIcon={<KeyboardArrowRightIcon />}
             onClick={() => {
-              setIsLoggedIn(true)
-              setIsSignedUp(false)
+              setIsLoggedIn(true);
+              setIsSignedUp(false);
             }}
           >
             Signup
