@@ -12,9 +12,9 @@ function BookRatingChange({ bookId, rating, onChangeRating }) {
       .put(`https://bookself-server.herokuapp.com/books/${bookId}`, {
         rating: newValue,
       })
-      .then((res) => {
-        console.log(res);
-      })
+      // .then((res) => {
+      //   console.log(res);
+      // })
       .catch((err) => console.log(err));
   };
 
