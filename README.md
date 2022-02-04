@@ -19,5 +19,8 @@ More features to come
 - Login using Google/Facebook account 
 - Filter out books by year
 
+
+
 Video Demo: https://www.loom.com/share/a6fca1e611984f948a108785e1497d28
+
 Website: https://book-self.herokuapp.com/
